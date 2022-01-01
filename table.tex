@@ -1,0 +1,38 @@
+\documentclass{article}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+
+\begin{document}
+
+\begin{table}[h!]
+    \begin{center}
+      \caption{Multirow and -column table.}
+      \label{tab:table1}
+      \begin{tabular}{l|c|r}
+      \toprule
+        \textbf{Value 1} & \textbf{Value 2} & \textbf{Value 3}\\
+        $\alpha$ & $\beta$ & $\gamma$ \\
+        \midrule
+        \hline
+        \multicolumn{2}{c|}{\multirow{2}{*}{1234}} & a\\ % <-- Multicolumn spanning 2 columns, content multirow spanning two rows
+        \multicolumn{2}{c|}{} & b\\ % <-- Multicolumn spanning 2 columns with empty content as placeholder
+        \hline
+        3 & 23.113231 & c\\
+        4 & 25.113231 & d\\
+        \bottomrule
+      \end{tabular}
+    \end{center}
+  \end{table}
+    
+  \begin{table}
+      
+  $\left(\begin{tabular}{ccc|c}
+
+    a11 & a12 & a13  & b1 \\
+    a21 & a22  & a23 & b2  \\ 
+    a31 & a32  & a33 & b3  \\
+    
+    \end{tabular}\right)$
+  \end{table}
+\end{document}

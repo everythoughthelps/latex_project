@@ -1,0 +1,646 @@
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2018.9.12)  30 DEC 2019 18:01
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Disclaim.tex
+(./Disclaim.tex
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+! Undefined control sequence.
+l.1 \chapter
+            *{\heiti{原创性及学位论文使用授权声明}}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \chapter*
+             {\heiti{原创性及学位论文使用授权声明}}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no * in font nullfont!
+! Undefined control sequence.
+l.1 \chapter*{\heiti
+                    {原创性及学位论文使用授权声明}}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no 原 in font nullfont!
+Missing character: There is no 创 in font nullfont!
+Missing character: There is no 性 in font nullfont!
+Missing character: There is no 及 in font nullfont!
+Missing character: There is no 学 in font nullfont!
+Missing character: There is no 位 in font nullfont!
+Missing character: There is no 论 in font nullfont!
+Missing character: There is no 文 in font nullfont!
+Missing character: There is no 使 in font nullfont!
+Missing character: There is no 用 in font nullfont!
+Missing character: There is no 授 in font nullfont!
+Missing character: There is no 权 in font nullfont!
+Missing character: There is no 声 in font nullfont!
+Missing character: There is no 明 in font nullfont!
+Missing character: There is no 本 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 人 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 郑 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 重 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 声 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 明 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 所 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 呈 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 交 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 学 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 位 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 论 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ， in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 是 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 本 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 人 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 在 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 导 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 师 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 指 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 导 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 下 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ， in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 独 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 立 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 进 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 行 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 研 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 究 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 工 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 作 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 所 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 取 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 得 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 成 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 果 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 。 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 除 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 中 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 已 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 经 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 注 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 明 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 引 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 用 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 内 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 容 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 外 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ， in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 本 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 论 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 不 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 包 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 含 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 任 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 何 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 其 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 他 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 个 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 人 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 或 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 集 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 体 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 已 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 经 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 发 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 表 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 或 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 撰 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 写 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 过 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 作 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 品 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 成 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 果 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 。 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 对 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 本 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 研 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 究 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 作 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 出 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 重 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 要 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 贡 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 献 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 个 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 人 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 和 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 集 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 体 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ， in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 均 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 已 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 在 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 中 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 以 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 明 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 确 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 方 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 式 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 标 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 明 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 。 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 本 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 人 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 完 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 全 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 意 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 识 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 到 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 本 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 声 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 明 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 法 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 律 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 结 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 果 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 由 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 本 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 人 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 承 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 担 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 。 in font [lmroman17-regular]:mapping=tex-text;!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--4
+[]
+ []
+
+
+Overfull \hbox (217.95pt too wide) in paragraph at lines 1--4
+\TU/lmr/m/n/15 本人郑重声明:所呈交的学位论文，是本人在导师的指导下，独立进行研究工作所取得的成果。除文中已经注明引用的
+ []
+
+
+Overfull \hbox (226.8pt too wide) in paragraph at lines 1--4
+\TU/lmr/m/n/15 内容外，本论文不包含任何其他个人或集体已经发表或撰写过的作品成果。对本文的研究作出重要贡献的个人和集体，均已
+ []
+
+
+Overfull \hbox (113.40001pt too wide) in paragraph at lines 1--4
+\TU/lmr/m/n/15 在文中以明确方式标明。本人完全意识到本声明的法律结果由
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 1--4
+\TU/lmr/m/n/15 本人承担。 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.6 学
+     位论文作者签名：
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 学 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 位 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 论 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 作 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 者 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 签 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 名 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ： in font [lmroman17-regular]:mapping=tex-text;!
+
+Overfull \hbox (57.8pt too wide) in paragraph at lines 6--7
+[]\TU/lmr/m/n/15 学位论文作者签名： 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.8 日
+     期：\quad \quad 年\quad \quad 月\quad \quad 日
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 日 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 期 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ： in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 年 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 月 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 日 in font [lmroman17-regular]:mapping=tex-text;!
+
+Overfull \hbox (32.6pt too wide) in paragraph at lines 8--9
+[]\TU/lmr/m/n/15 日期：
+ []
+
+
+Overfull \hbox (4.2pt too wide) in paragraph at lines 8--9
+\TU/lmr/m/n/15 年
+ []
+
+
+Overfull \hbox (4.2pt too wide) in paragraph at lines 8--9
+\TU/lmr/m/n/15 月
+ []
+
+
+Overfull \hbox (4.2pt too wide) in paragraph at lines 8--9
+\TU/lmr/m/n/15 日 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.11 本
+      人完全了解中山大学有关保留、使用学位论文的规定，即：学校有权保留学位论文并向国家主管部门或其指定机构送 交论文的电子版和纸质版;有权将学位论...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 本 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 人 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 完 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 全 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 了 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 解 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 中 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 山 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 大 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 学 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 有 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 关 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 保 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 留 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 、 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 使 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 用 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 学 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 位 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 论 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 规 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 定 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ， in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 即 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ： in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 学 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 校 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 有 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 权 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 保 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 留 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 学 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 位 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 论 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 并 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 向 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 国 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 家 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 主 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 管 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 部 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 门 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 或 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 其 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 指 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 定 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 机 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 构 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 送 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 交 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 论 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 电 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 子 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 版 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 和 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 纸 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 质 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 版 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 有 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 权 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 将 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 学 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 位 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 论 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 用 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 于 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 非 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 赢 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 利 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 目 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 少 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 量 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 复 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 制 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 并 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 允 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 许 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 论 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 进 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 入 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 学 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 校 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 图 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 书 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 馆 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 、 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 院 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 系 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 资 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 料 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 室 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 被 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 查 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 阅 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 有 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 权 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 将 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 学 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 位 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 论 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 内 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 容 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 编 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 入 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 有 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 关 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 数 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 据 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 库 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 进 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 行 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 检 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 索 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ； in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 可 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 以 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 采 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 用 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 复 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 印 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 、 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 缩 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 印 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 或 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 其 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 他 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 方 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 法 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 保 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 存 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 学 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 位 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 论 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ； in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 可 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 以 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 为 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 建 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 立 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 了 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 馆 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 际 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 合 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 作 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 关 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 系 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 的 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 兄 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 弟 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 高 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 校 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 用 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 户 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 提 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 供 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 献 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 传 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 递 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 服 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 务 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 和 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 交 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 换 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 服 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 务 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 。 in font [lmroman17-regular]:mapping=tex-text;!
+
+Overfull \hbox (238.4pt too wide) in paragraph at lines 11--12
+[]\TU/lmr/m/n/15 本人完全了解中山大学有关保留、使用学位论文的规定，即：学校有权保留学位论文并向国家主管部门或其指定机构送
+ []
+
+
+Overfull \hbox (112.95pt too wide) in paragraph at lines 11--12
+\TU/lmr/m/n/15 交论文的电子版和纸质版;有权将学位论文用于非赢利目的的
+ []
+
+
+Overfull \hbox (112.95pt too wide) in paragraph at lines 11--12
+\TU/lmr/m/n/15 少量复制并允许论文进入学校图书馆、院系资料室被查阅;有
+ []
+
+
+Overfull \hbox (222.6pt too wide) in paragraph at lines 11--12
+\TU/lmr/m/n/15 权将学位论文的内容编入有关数据库进行检索；可以采用复印、缩印或其他方法保存学位论文；可以为建立了馆际合作关
+ []
+
+
+Overfull \hbox (92.40001pt too wide) in paragraph at lines 11--12
+\TU/lmr/m/n/15 系的兄弟高校用户提供文献传递服务和交换服务。 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 保
+      密论文保密期满后，适用本声明。
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 保 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 密 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 论 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 保 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 密 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 期 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 满 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 后 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ， in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 适 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 用 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 本 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 声 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 明 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 。 in font [lmroman17-regular]:mapping=tex-text;!
+
+Overfull \hbox (87.2pt too wide) in paragraph at lines 13--14
+[]\TU/lmr/m/n/15 保密论文保密期满后，适用本声明。 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.15 学
+      位论文作者签名：\qquad  \qquad \qquad \quad 导师签名：
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 学 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 位 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 论 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 文 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 作 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 者 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 签 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 名 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ： in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 导 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 师 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 签 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 名 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ： in font [lmroman17-regular]:mapping=tex-text;!
+
+Overfull \hbox (57.8pt too wide) in paragraph at lines 15--16
+[]\TU/lmr/m/n/15 学位论文作者签名：
+ []
+
+
+Overfull \hbox (21.0pt too wide) in paragraph at lines 15--16
+\TU/lmr/m/n/15 导师签名： 
+ []
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 日
+      期：\quad \quad 年\quad \quad 月\quad \quad 日 \qquad \qquad 日期：\quad \quad...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 日 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 期 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ： in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 年 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 月 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 日 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 日 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 期 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no ： in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 年 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 月 in font [lmroman17-regular]:mapping=tex-text;!
+Missing character: There is no 日 in font [lmroman17-regular]:mapping=tex-text;!
+
+Overfull \hbox (32.6pt too wide) in paragraph at lines 17--18
+[]\TU/lmr/m/n/15 日期：
+ []
+
+
+Overfull \hbox (4.2pt too wide) in paragraph at lines 17--18
+\TU/lmr/m/n/15 年
+ []
+
+
+Overfull \hbox (4.2pt too wide) in paragraph at lines 17--18
+\TU/lmr/m/n/15 月
+ []
+
+
+Overfull \hbox (4.2pt too wide) in paragraph at lines 17--18
+\TU/lmr/m/n/15 日
+ []
+
+
+Overfull \hbox (12.6pt too wide) in paragraph at lines 17--18
+\TU/lmr/m/n/15 日期：
+ []
+
+
+Overfull \hbox (4.2pt too wide) in paragraph at lines 17--18
+\TU/lmr/m/n/15 年
+ []
+
+
+Overfull \hbox (4.2pt too wide) in paragraph at lines 17--18
+\TU/lmr/m/n/15 月
+ []
+
+
+Overfull \hbox (4.2pt too wide) in paragraph at lines 17--18
+\TU/lmr/m/n/15 日 
+ []
+
+)
+! Emergency stop.
+<*> Disclaim.tex
+                
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 8 strings out of 492970
+ 137 string characters out of 6133938
+ 64642 words of memory out of 5000000
+ 4114 multiletter control sequences out of 15000+600000
+ 3648 words of font info for 15 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 12i,1n,7p,200b,42s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.

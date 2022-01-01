@@ -1,0 +1,338 @@
+\begin{thebibliography}{10}
+\providecommand{\bibauthor}[1]{#1}
+\providecommand{\bibeditor}[1]{#1}
+\providecommand{\bibtranslator}[1]{#1}
+\providecommand{\bibtitle}[1]{#1}
+\providecommand{\bibbooktitle}[1]{#1}
+\providecommand{\bibjournal}[1]{#1}
+\providecommand{\bibmark}[1]{#1}
+\providecommand{\bibcountry}[1]{#1}
+\providecommand{\bibpatentid}[1]{#1}
+\providecommand{\bibedition}[1]{#1}
+\providecommand{\biborganization}[1]{#1}
+\providecommand{\bibaddress}[1]{#1}
+\providecommand{\bibpublisher}[1]{#1}
+\providecommand{\bibinstitution}[1]{#1}
+\providecommand{\bibschool}[1]{#1}
+\providecommand{\bibvolume}[1]{#1}
+\providecommand{\bibnumber}[1]{#1}
+\providecommand{\bibversion}[1]{#1}
+\providecommand{\bibpages}[1]{#1}
+\providecommand{\bibmodifydate}[1]{#1}
+\providecommand{\bibcitedate}[1]{#1}
+\providecommand{\bibyear}[1]{#1}
+\providecommand{\bibdate}[1]{#1}
+\providecommand{\biburl}[1]{url{#1}}
+
+\bibitem{zhang2012microsoft}
+\bibauthor{ZHANG Z}\@. \bibtitle{Microsoft kinect sensor and its
+  effect}\bibmark{[J]}\@. \bibjournal{IEEE Multimedia}\@, \bibyear{2012}\@,
+  \bibvolume{19}\bibnumber{(2)}\thinspace{}\textnormal{:
+  }\bibpages{4\thinspace{}\textnormal{--}\thinspace{}10}\@.
+
+\bibitem{yoneda2014lidar}
+\bibauthor{YONEDA K\@, TEHRANI H\@, OGAWA T, et~al}\@. \bibtitle{Lidar scan
+  feature for localization with highly precise 3-D map}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{IEEE Intelligent Vehicles Symposium
+  Proceedings}\@. \bibyear{2014}\thinspace{}\textnormal{:
+  }\bibpages{1345\thinspace{}\textnormal{--}\thinspace{}1350}\@.
+
+\bibitem{zou2010method}
+\bibauthor{ZOU L\@, LI Y}\@. \bibtitle{A method of stereo vision matching based
+  on OpenCV}\bibmark{[C]} //\thinspace{}\bibbooktitle{International Conference
+  on Audio, Language and Image Processing}\@.
+  \bibyear{2010}\thinspace{}\textnormal{:
+  }\bibpages{185\thinspace{}\textnormal{--}\thinspace{}190}\@.
+
+\bibitem{cao2015summary}
+\bibauthor{CAO Z\@, YAN Z\@, WANG H}\@. \bibtitle{Summary of binocular stereo
+  vision matching technology}\bibmark{[J]}\@. \bibjournal{Journal of Chongqing
+  University of Technology (Natural Science)}\@, \bibyear{2015}\@,
+  \bibvolume{29}\bibnumber{(2)}\thinspace{}\textnormal{:
+  }\bibpages{70\thinspace{}\textnormal{--}\thinspace{}75}\@.
+
+\bibitem{ullman1979interpretation}
+\bibauthor{ULLMAN S}\@. \bibtitle{The interpretation of structure from
+  motion}\bibmark{[J]}\@. \bibjournal{Proceedings of the Royal Society of
+  London. Series B. Biological Sciences}\@, \bibyear{1979}\@,
+  \bibvolume{203}\bibnumber{(1153)}\thinspace{}\textnormal{:
+  }\bibpages{405\thinspace{}\textnormal{--}\thinspace{}426}\@.
+
+\bibitem{saxena2006learning}
+\bibauthor{SAXENA A\@, CHUNG S~H\@, NG A~Y}\@. \bibtitle{Learning depth from
+  single monocular images}\bibmark{[C]} //\thinspace{}\bibbooktitle{Advances in
+  neural information processing systems}\@.
+  \bibyear{2006}\thinspace{}\textnormal{:
+  }\bibpages{1161\thinspace{}\textnormal{--}\thinspace{}1168}\@.
+
+\bibitem{saxena2007}
+\bibauthor{SAXENA A\@, SCHULTE J\@, NG A~Y}\@. \bibtitle{Depth estimation using
+  monocular and stereo cues}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{International Joint Conference on Artifical
+  Intelligence}\@. \bibyear{2007}\@.
+
+\bibitem{eigen2014depth}
+\bibauthor{EIGEN D\@, PUHRSCH C\@, FERGUS R}\@. \bibtitle{Depth map prediction
+  from a single image using a multi-scale deep network}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{Advances in neural information processing
+  systems}\@. \bibyear{2014}\thinspace{}\textnormal{:
+  }\bibpages{2366\thinspace{}\textnormal{--}\thinspace{}2374}\@.
+
+\bibitem{eigenthreetasks}
+\bibauthor{EIGEN D\@, FERGUS R}\@. \bibtitle{Predicting Depth, Surface Normals
+  and Semantic Labels with a Common Multi-scale Convolutional
+  Architecture}\bibmark{[C]} //\thinspace{}\bibbooktitle{IEEE International
+  Conference on Computer Vision}\@. \bibyear{2015}\thinspace{}\textnormal{:
+  }\bibpages{2650\thinspace{}\textnormal{--}\thinspace{}2658}\@.
+
+\bibitem{vgg}
+\bibauthor{SIMONYAN K\@, ZISSERMAN A}\@. \bibtitle{Very Deep Convolutional
+  Networks for Large-Scale Image Recognition}\bibmark{[C]}
+  //\thinspace{}\bibeditor{BENGIO Y\@, LECUN Y}\@. \bibbooktitle{3rd
+  International Conference on Learning Representations}\@. \bibyear{2015}\@.
+
+\bibitem{liu2015learning}
+\bibauthor{LIU F\@, SHEN C\@, LIN G, et~al}\@. \bibtitle{Learning depth from
+  single monocular images using deep convolutional neural
+  fields}\bibmark{[J]}\@. \bibjournal{IEEE transactions on pattern analysis and
+  machine intelligence}\@, \bibyear{2015}\@,
+  \bibvolume{38}\bibnumber{(10)}\thinspace{}\textnormal{:
+  }\bibpages{2024\thinspace{}\textnormal{--}\thinspace{}2039}\@.
+
+\bibitem{li2015depth}
+\bibauthor{LI B\@, SHEN C\@, DAI Y, et~al}\@. \bibtitle{Depth and surface
+  normal estimation from monocular images using regression on deep features and
+  hierarchical crfs}\bibmark{[C]} //\thinspace{}\bibbooktitle{Proceedings of
+  the IEEE conference on computer vision and pattern recognition}\@.
+  \bibyear{2015}\thinspace{}\textnormal{:
+  }\bibpages{1119\thinspace{}\textnormal{--}\thinspace{}1127}\@.
+
+\bibitem{laina2016deeper}
+\bibauthor{LAINA I\@, RUPPRECHT C\@, BELAGIANNIS V, et~al}\@. \bibtitle{Deeper
+  depth prediction with fully convolutional residual networks}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{Proceedings of the IEEE/CVF International
+  Conference on 3D Vision}\@. \bibyear{2016}\thinspace{}\textnormal{:
+  }\bibpages{239\thinspace{}\textnormal{--}\thinspace{}248}\@.
+
+\bibitem{zoran2015learning}
+\bibauthor{ZORAN D\@, ISOLA P\@, KRISHNAN D, et~al}\@. \bibtitle{Learning
+  Ordinal Relationships for Mid-Level Vision}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{IEEE International Conference on Computer
+  Vision}\@. \bibyear{2015}\thinspace{}\textnormal{:
+  }\bibpages{388\thinspace{}\textnormal{--}\thinspace{}396}\@.
+
+\bibitem{chen2016}
+\bibauthor{CHEN W\@, FU Z\@, YANG D, et~al}\@. \bibtitle{Single-Image Depth
+  Perception in the Wild}\bibmark{[C]} //\thinspace{}\bibeditor{LEE D\@,
+  SUGIYAMA M\@, LUXBURG U, et~al}\@. \bibbooktitle{Advances in Neural
+  Information Processing Systems\thinspace{}\textnormal{: }Vol~29}\@.
+  \bibyear{2016}\thinspace{}\textnormal{:
+  }\bibpages{730\thinspace{}\textnormal{--}\thinspace{}738}\@.
+
+\bibitem{2015semantic}
+\bibauthor{WANG P\@, SHEN X\@, LIN Z, et~al}\@. \bibtitle{Towards unified depth
+  and semantic prediction from a single image}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{IEEE Conference on Computer Vision and Pattern
+  Recognition}\@. \bibyear{2015}\thinspace{}\textnormal{:
+  }\bibpages{2800\thinspace{}\textnormal{--}\thinspace{}2809}\@.
+
+\bibitem{2016semantic}
+\bibauthor{MOUSAVIAN A\@, PIRSIAVASH H\@, KOšECKá J}\@. \bibtitle{Joint
+  Semantic Segmentation and Depth Estimation with Deep Convolutional
+  Networks}\bibmark{[C]} //\thinspace{}\bibbooktitle{International Conference
+  on 3D Vision}\@. \bibyear{2016}\thinspace{}\textnormal{:
+  }\bibpages{611\thinspace{}\textnormal{--}\thinspace{}619}\@.
+
+\bibitem{cao2017estimating}
+\bibauthor{CAO Y\@, WU Z\@, SHEN C}\@. \bibtitle{Estimating depth from
+  monocular images as classification using deep fully convolutional residual
+  networks}\bibmark{[J]}\@. \bibjournal{IEEE Transactions on Circuits and
+  Systems for Video Technology}\@, \bibyear{2017}\@,
+  \bibvolume{28}\bibnumber{(11)}\thinspace{}\textnormal{:
+  }\bibpages{3174\thinspace{}\textnormal{--}\thinspace{}3182}\@.
+
+\bibitem{garg2016unsupervised}
+\bibauthor{GARG R\@, BG V~K\@, CARNEIRO G, et~al}\@. \bibtitle{Unsupervised cnn
+  for single view depth estimation: Geometry to the rescue}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{IEEE European conference on computer vision}\@.
+  \bibyear{2016}\thinspace{}\textnormal{:
+  }\bibpages{740\thinspace{}\textnormal{--}\thinspace{}756}\@.
+
+\bibitem{zhou2017unsupervised}
+\bibauthor{ZHOU T\@, BROWN M\@, SNAVELY N, et~al}\@. \bibtitle{Unsupervised
+  Learning of Depth and Ego-Motion from Video}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{IEEE Conference on Computer Vision and Pattern
+  Recognition}\@. \bibyear{2017}\thinspace{}\textnormal{:
+  }\bibpages{6612\thinspace{}\textnormal{--}\thinspace{}6619}\@.
+
+\bibitem{Godard2019}
+\bibauthor{GODARD C\@, MAC~AODHA O\@, FIRMAN M, et~al}\@. \bibtitle{Digging
+  Into Self-Supervised Monocular Depth Estimation}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{Proceedings of the IEEE/CVF International
+  Conference on Computer Vision}\@. \bibyear{2019}\thinspace{}\textnormal{:
+  }\bibpages{1209\thinspace{}\textnormal{--}\thinspace{}1218}\@.
+
+\bibitem{kuznietsov}
+\bibauthor{KUZNIETSOV Y\@, STüCKLER J\@, LEIBE B}\@. \bibtitle{Semi-Supervised
+  Deep Learning for Monocular Depth Map Prediction}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{IEEE Conference on Computer Vision and Pattern
+  Recognition}\@. \bibyear{2017}\thinspace{}\textnormal{:
+  }\bibpages{2215\thinspace{}\textnormal{--}\thinspace{}2223}\@.
+
+\bibitem{lenet}
+\bibauthor{LECUN Y\@, BOTTOU L\@, BENGIO Y, et~al}\@. \bibtitle{Gradient-based
+  learning applied to document recognition}\bibmark{[J]}\@.
+  \bibjournal{Proceedings of the IEEE}\@, \bibyear{1998}\@,
+  \bibvolume{86}\bibnumber{(11)}\thinspace{}\textnormal{:
+  }\bibpages{2278\thinspace{}\textnormal{--}\thinspace{}2324}\@.
+
+\bibitem{middlebury}
+\bibauthor{SCHARSTEIN D\@, HIRSCHM{\"U}LLER H\@, KITAJIMA Y, et~al}\@.
+  \bibtitle{High-Resolution Stereo Datasets with Subpixel-Accurate Ground
+  Truth}\bibmark{[C]} //\thinspace{}\bibbooktitle{Pattern Recognition}\@.
+  \bibaddress{[S.l.]}\thinspace{}\textnormal{: }\bibpublisher{Springer
+  International Publishing}\@, \bibyear{2014}\thinspace{}\textnormal{:
+  }\bibpages{31\thinspace{}\textnormal{--}\thinspace{}42}\@.
+
+\bibitem{lecun2010mnist}
+\bibauthor{LECUN Y\@, CORTES C\@, BURGES C}\@. \bibtitle{MNIST handwritten
+  digit database}\bibmark{[J]}\@. \bibjournal{ATT Labs}\@, \bibyear{2010}\@,
+  \bibvolume{2}\@.
+
+\bibitem{Krizhevsky}
+\bibauthor{KRIZHEVSKY A\@, HINTON G}\@. \bibtitle{Learning multiple layers of
+  features from tiny images}\bibmark{[J]}\@. \bibjournal{Computer Science
+  Department, University of Toronto, Tech. Rep}\@, \bibyear{2009}\@,
+  \bibvolume{1}\@.
+
+\bibitem{imagenet}
+\bibauthor{DENG J\@, DONG W\@, SOCHER R, et~al}\@. \bibtitle{ImageNet: A
+  large-scale hierarchical image database}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{IEEE Conference on Computer Vision and Pattern
+  Recognition}\@. \bibyear{2009}\thinspace{}\textnormal{:
+  }\bibpages{248\thinspace{}\textnormal{--}\thinspace{}255}\@.
+
+\bibitem{coco}
+\bibauthor{LIN T-Y\@, MAIRE M\@, BELONGIE S, et~al}\@. \bibtitle{Microsoft
+  COCO: Common Objects in Context}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{Europen Conference on Computer Vision}\@.
+  \bibaddress{[S.l.]}\thinspace{}\textnormal{: }\bibpublisher{Springer
+  International Publishing}\@, \bibyear{2014}\thinspace{}\textnormal{:
+  }\bibpages{740\thinspace{}\textnormal{--}\thinspace{}755}\@.
+
+\bibitem{kitti}
+\bibauthor{GEIGER A\@, LENZ P\@, STILLER C, et~al}\@. \bibtitle{Vision meets
+  robotics: The kitti dataset}\bibmark{[J]}\@. \bibjournal{The International
+  Journal of Robotics Research}\@, \bibyear{2013}\@,
+  \bibvolume{32}\bibnumber{(11)}\thinspace{}\textnormal{:
+  }\bibpages{1231\thinspace{}\textnormal{--}\thinspace{}1237}\@.
+
+\bibitem{nyu}
+\bibauthor{Derek~Hoiem NATHAN~SILBERMAN P~K\@, FERGUS R}\@. \bibtitle{Indoor
+  Segmentation and Support Inference from RGBD Images}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{European Conference on Computer Vision}\@.
+  \bibyear{2012}\thinspace{}\textnormal{:
+  }\bibpages{746\thinspace{}\textnormal{--}\thinspace{}760}\@.
+
+\bibitem{Make3D}
+\bibauthor{SAXENA A\@, SUN M\@, NG A~Y}\@. \bibtitle{Make3D: Learning 3D Scene
+  Structure from a Single Still Image}\bibmark{[J]}\@. \bibjournal{IEEE
+  Transactions on Pattern Analysis and Machine Intelligence}\@,
+  \bibyear{2009}\@, \bibvolume{31}\bibnumber{(5)}\thinspace{}\textnormal{:
+  }\bibpages{824\thinspace{}\textnormal{--}\thinspace{}840}\@.
+
+\bibitem{scannet}
+\bibauthor{DAI A\@, CHANG A~X\@, SAVVA M, et~al}\@. \bibtitle{ScanNet:
+  Richly-annotated 3D Reconstructions of Indoor Scenes}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{Proceeding of the IEEE Conference on Computer
+  Vision and Pattern Recognition}\@. \bibyear{2017}\@.
+
+\bibitem{cityscapes}
+\bibauthor{CORDTS M\@, OMRAN M\@, RAMOS S, et~al}\@. \bibtitle{The Cityscapes
+  Dataset for Semantic Urban Scene Understanding}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{Proceeding of the IEEE Conference on Computer
+  Vision and Pattern Recognition}\@. \bibyear{2016}\@.
+
+\bibitem{unet}
+\bibauthor{RONNEBERGER O\@, P.FISCHER\@, BROX T}\@. \bibtitle{U-Net:
+  Convolutional Networks for Biomedical Image Segmentation}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{Medical Image Computing and Computer-Assisted
+  Intervention\thinspace{}\textnormal{: }Vol~9351}\@.
+  \bibaddress{[S.l.]}\thinspace{}\textnormal{: }\bibpublisher{Springer}\@,
+  \bibyear{2015}\thinspace{}\textnormal{:
+  }\bibpages{234\thinspace{}\textnormal{--}\thinspace{}241}\@.
+
+\bibitem{pm}
+\bibauthor{潘孟\@, 张欢荣\@, 金枝, et~al}\@.
+  \bibtitle{基于像素分类的单目深度估计网络}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{China Automation Congress}\@. \bibyear{2020}\@.
+
+\bibitem{paszke2019pytorch}
+\bibauthor{PASZKE A\@, GROSS S\@, MASSA F, et~al}\@. \bibtitle{Pytorch: An
+  imperative style, high-performance deep learning library}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{Advances in neural information processing
+  systems}\@. \bibyear{2019}\thinspace{}\textnormal{:
+  }\bibpages{8026\thinspace{}\textnormal{--}\thinspace{}8037}\@.
+
+\bibitem{2014adam}
+\bibauthor{KINGMA D\@, BA J}\@. \bibtitle{Adam: A Method for Stochastic
+  Optimization}\bibmark{[J]}\@. \bibjournal{Computer Science}\@,
+  \bibyear{2014}\@.
+
+\bibitem{chakrabarti2016depth}
+\bibauthor{CHAKRABARTI A\@, SHAO J\@, SHAKHNAROVICH G}\@. \bibtitle{Depth from
+  a single image by harmonizing overcomplete local network
+  predictions}\bibmark{[J]}\@. \bibjournal{arXiv preprint arXiv:1605.07081}\@,
+  \bibyear{2016}\@.
+
+\bibitem{xu2018structured}
+\bibauthor{XU D\@, WANG W\@, TANG H, et~al}\@. \bibtitle{Structured attention
+  guided convolutional neural fields for monocular depth
+  estimation}\bibmark{[C]} //\thinspace{}\bibbooktitle{Proceedings of the IEEE
+  conference on computer vision and pattern recognition}\@.
+  \bibyear{2018}\thinspace{}\textnormal{:
+  }\bibpages{3917\thinspace{}\textnormal{--}\thinspace{}3925}\@.
+
+\bibitem{lee2019monocular}
+\bibauthor{LEE J-H\@, KIM C-S}\@. \bibtitle{Monocular depth estimation using
+  relative depth maps}\bibmark{[C]} //\thinspace{}\bibbooktitle{Proceedings of
+  the IEEE Conference on Computer Vision and Pattern Recognition}\@.
+  \bibyear{2019}\thinspace{}\textnormal{:
+  }\bibpages{9729\thinspace{}\textnormal{--}\thinspace{}9738}\@.
+
+\bibitem{2019semantic}
+\bibauthor{CHEN P\@, LIU A~H\@, LIU Y, et~al}\@. \bibtitle{Towards Scene
+  Understanding: Unsupervised Monocular Depth Estimation With Semantic-Aware
+  Representation}\bibmark{[C]} //\thinspace{}\bibbooktitle{IEEE/CVF Conference
+  on Computer Vision and Pattern Recognition}\@.
+  \bibyear{2019}\thinspace{}\textnormal{:
+  }\bibpages{2619\thinspace{}\textnormal{--}\thinspace{}2627}\@.
+
+\bibitem{FuCVPR18-DORN}
+\bibauthor{FU H\@, GONG M\@, WANG C, et~al}\@. \bibtitle{Deep Ordinal
+  Regression Network for Monocular Depth Estimation}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}\@. \bibyear{2018}\thinspace{}\textnormal{:
+  }\bibpages{2002\thinspace{}\textnormal{--}\thinspace{}2011}\@.
+
+\bibitem{DABC}
+\bibauthor{LI R\@, XIAN K\@, SHEN C, et~al}\@. \bibtitle{Deep Attention-Based
+  Classification Network for Robust Depth Prediction}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{Asian Conference of Computer Vision}\@.
+  \bibaddress{[S.l.]}\thinspace{}\textnormal{: }\bibpublisher{Springer
+  International Publishing}\@, \bibyear{2019}\thinspace{}\textnormal{:
+  }\bibpages{663\thinspace{}\textnormal{--}\thinspace{}678}\@.
+
+\bibitem{bts}
+\bibauthor{LEE J~H\@, HAN M\@, KO D~W, et~al}\@. \bibtitle{From Big to Small:
+  Multi-Scale Local Planar Guidance for Monocular Depth
+  Estimation}\bibmark{[J]}\@, \bibyear{2019}\@.
+
+\bibitem{godard2017unsupervised}
+\bibauthor{GODARD C\@, MAC~AODHA O\@, BROSTOW G~J}\@. \bibtitle{Unsupervised
+  monocular depth estimation with left-right consistency}\bibmark{[C]}
+  //\thinspace{}\bibbooktitle{Proceedings of the IEEE Conference on Computer
+  Vision and Pattern Recognition}\@. \bibyear{2017}\thinspace{}\textnormal{:
+  }\bibpages{270\thinspace{}\textnormal{--}\thinspace{}279}\@.
+
+\end{thebibliography}

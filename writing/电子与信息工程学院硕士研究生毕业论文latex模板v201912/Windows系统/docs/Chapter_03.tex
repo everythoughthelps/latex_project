@@ -1,0 +1,413 @@
+\chapter{基于像素分类的单目深度估计网络}
+\section{引言}
+深度图为每个像素存储了场景到相机距离信息的图像。深度估计任务
+也就是估计给每个像素上场景到相机的距离，这与像素分类任务十分相似。本文将
+深度估计任务建模为像素级别的分类任务，提出了一种单目深度估计
+算法。首先需要将真实稠密的深度图进行离散化，使其成为离散的深度标签，
+随后算法使用一张RGB图像作为输入，经过重复的特征图提取卷积层后输出了
+不同尺度的特征图，这些特征图通过U-Net\cite{unet}
+短路连接（ShortCut）参与到上采样重建过程。
+近年来许多方法使用短路连接将编码端的特征图直接输出到解码端，
+通过短路连接输入的特征图和上采样特征图对重建过程的贡献并不
+是相同的，为了使网络对短路连接输入的特征图和上采样特征图
+有可学习的关注度，本章设计了特征注意力模块（Feature
+Attention Module, FAM）。最后网络输出了每个像素位置
+的备选深度及其相应概率，并通过计算深度与对应概率的期望获得最终深度。
+网络架构如图\ref{Stream of class}所示。
+
+本章的创新点总结如下：
+\begin{enumerate}
+  \item 将深度估计任务建模为像素分类任务，提出了一种像素分类单目深度估计框架。
+  \item 提出了特征注意力模块，使网络可以学习对特征图的注意程度。
+  \item 实验结果表明本章网络性能可以达到国内外先进水平，且特征注意力
+  模块对重建性能有一定的提升效果。
+\end{enumerate}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figure/Stream_of_class.pdf}
+    \caption{基于像素分类的单目深度估计网络架构\cite{pm}}
+    \label{Stream of class}
+\end{figure}
+\section{基于像素分类的单目深度估计网络}
+\subsection{网络结构}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figure/Architecture.pdf}
+    \caption{像素分类单目深度估计网络的具体网络结构}
+    \label{cls_architecture}
+\end{figure}
+本章提出的具体网络结构如图\ref{cls_architecture}所示。
+网络采用了编解码结构，骨干网络上使用了类U-Net结构。
+在编码端，RGB图像首先经过一个$3\times3$步长为1
+的卷积核，使
+图像的通道扩展到64，随后再次经过一个$3\times3$步长为1
+的卷积核，通道维持不变。下采样方式设置了步长为2的
+最大池化层。该卷积、下采样组合网络重复堆叠五次，每次获得的特征图通道
+分别为64，128，256，512，1024。即第一次将RGB图像拓展到
+64通道，随后四次下采样均伴随着尺寸减半，通道加倍。
+最小尺度的特征图尺寸为$1024\times19\times15$，
+接着经过步长为2的最大池化层，使用卷积层对其通道加倍后
+进入解码端对特征图进行上采样重建。
+网络使用短路连接将编码的多尺度
+特征图直接输入到解码端进行特征融合。高维度特征图和编码特征图共同参与到
+上采样过程中，为了使网络可以学习对每个特征图的关注程度，
+本章提出了特征注意力模块。经过特征注意力模块后，使用步长为1
+，$3\times3$的卷积核进行卷积计算。经过四次特征注意力模块后
+得到原尺寸$\frac{1}{2}$的特征图，随后使用一次上采样
+和一个步长为1，$3\times3$的卷积核将特征图重建为原尺寸大小，
+通道数为像素分类的类别C。对最终输出在通道维度内使用softmax
+计算，得到每个备选深度的置信度。最后依靠置信度计算最终深度的期望。
+
+\subsection{特征注意力模块}
+本章使用了类U-Net的骨干网络来实现像素分类单目深度估计网络，
+网络提取的多尺度特征
+通过短路连接直接加入到重建过程中。重建时，网络依靠多尺度
+特征和解码特征共同完成重建预测。而两个特征
+对重建的贡献是不同的，所以本章设计了特征注意力模块，使
+网络可以学习对每个特征图的关注程度。
+特征注意力模块的结构如图\ref{FAM}所示。
+模块首先将多尺度特征和高维度的特征在通道维度
+上连接起来，随后经过全局平均池化层，获得一个一维向量。
+该向量代表了通道维度上的显著信号，随后向量经过
+$1\times1$的卷积层，ReLu激活层，sigmoid激活层
+后与连接后的特征图内积计算。
+连接后的特征图同时被直接输出，与内积结果求和，作为最终的输出。
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.4\linewidth]{figure/FAM.pdf}
+\caption{特征注意力模块网络结构}
+\label{FAM}
+\end{figure}
+\subsection{损失函数}
+基于像素分类的单目深度估计网络在最后一层需要进行像素分类。
+从C个深度类别中挑选最接近真实深度的像素。
+网络使用交叉熵损失函数（Cross-Entropy Loss）
+来监督网络的分类过程。
+\begin{align}
+    \mathcal{L} = \frac{1}{N}\sum_N \sum_{i=0}^{C} -i \log (p_i)
+\end{align}
+式中N为图像中有效的像素数目，$i$与别$p_i$分别为标签和该标签的概率。
+$C$为备选的深度类别。
+\section{实验结果与分析}
+为了更全面的评价本章所提出的网络和特征注意力模块带来的提升，
+本节设计了对比实验，从定性对比和视觉对比两个方面
+对网络的表现进行了对比。
+\subsection{实现细节}
+本节针对实验的细节进行详细阐述。本章所有程序均
+使用PyTorch\cite{paszke2019pytorch}
+开源深度学习框架进行实现。
+网络采用了4张RTX2080TI进行训练，NYU depth v2和KITTI的
+批数量分别设置为24和16，初始学习率设置为0.001，
+并且每10次迭代折半衰减一次，总共设置了100次迭代。
+选取了Adam\cite{2014adam}作为优化器，
+momentum和weight decay分别设置为0.9和0.0005。
+\subsection{数据集与评价指标}
+本节在实验时组织了多个数据集，包括
+室内数据集NYU depth和室外数据集KITTI。这两个数据集分别是
+单目深度估计在室内场景和室外场景最常用的数据集。
+NYU depth数据集是常用的深度估计数据集，它主要关注室内环境，
+数据集由464个室内场景组成，
+其中249个场景用作训练，215个场景用作测试。不同于KITTI数据集
+使用激光雷达来采集深度信息，NYU depth数据集使用
+Microsoft的Kinect RGB-D相机来采集视频序列和对应的深度。
+图像和深度图的分辨率为$480 \times 640$，通常会在实验中
+下采样减半来加速训练过程。为了去掉冗余的边缘信息，
+还会将图像进行中心裁剪到$228 \times 304$。
+因为不同的RGB相机和深度相机之间
+不是完全同步的，深度图和RGB图像之间不是一对一的对应关系。
+为了对齐深度图和RGB图像，每个深度图都与最近的RGB图像同步并且
+关联在一起。由于硬件原因，采集到的深度图通常会有空洞，
+这些空洞可以
+使用数据集提供的工具箱进行填补。
+
+KITTI数据集由装备在一台汽车上的传感器来进行采集，采集到的
+信息包括双目彩色视频，双目黑白视频，雷达点云信息，惯性导航信息，
+GPS信息等。原始数据量十分庞大。每个场景都包含一对双目RGB
+图像和对应的深度信息，分辨率为$1224 \times 368$。在使用上，KITTI有两种不同的划分。
+其中在Eigen Split选取了61个场景中的28个作为测试场景，
+从中选出了697张图像用来测试。在另外的28个场景中选出
+了26000张图像用于训练。而 KITTI split 包含29,000张训练图像，
+200张测试图像。
+
+对比实验选取了单目深度估计中的关键技术方法进行对比，并且
+选取了最常用的五个评价指标\cite{eigen2014depth}衡量本章提出的方法：
+$
+ RMSE=\sqrt{\frac{1}{\lvert N \rvert} \sum\nolimits_{i\in N}\lvert|d_i - d_i^*\rvert|^2} 
+$,
+$
+  RMSE \ log = \sqrt{\frac{1}{\lvert N \rvert}\sum\nolimits_{i\in N}\lvert| \lg(d_i) - \lg(d_i^*) \rvert|^2}
+$,
+$
+  Abs \ Rel=\frac{1}{\lvert N \rvert}\sum\nolimits_{i \in N}\frac{\lvert d_i - d_i^* \rvert}{d_i^*}
+$,
+$
+  Sq \ Rel=\frac{1}{\lvert N \rvert}\sum\nolimits_{i \in N}\frac{\lvert| d_i - d_i^* \rvert|^2}{d_i^*}
+$,
+$
+  Accuracies:\% \ of \ d_i \ s.t. \max(\frac{d_i}{d_i^*},\frac{d_i^*}{d_i})=\delta < thr 
+$。
+其中$d_i$和$d_i^*$表示预测深度与真实深度。$N$代表
+所有的有效像素。
+\subsection{定量结果}
+\begin{table*}[htb]
+    \centering
+    \caption{单目深度估计网络在NYU depth数据集上的效果对比，最佳结果使用加粗处理}
+    \label{tab:nyu cls quantitative result}
+    \begin{tabular}{c|cccc|ccc}
+      \toprule
+      \multirow{2}{*}{方法} & \multicolumn{4}{c}{越低效果越好}&\multicolumn{3}{|c}{越高效果越好}\\
+      & Rel Abs & Rel Sq & RMSE& RMSE $log$ &$\delta<1.25$ &$\delta<1.25^2$ & $\delta<1.25^3$ \\   
+      \midrule            
+      Saxena\cite{Make3D}&0.349&-&1.214&0.430&0.447&0.745&0.897\\
+      Eigen\cite{eigen2014depth}&0.158&0.218&0.641&0.285&0.769&0.950&0.962\\
+      Li\cite{li2015depth}&0.152&0.232&0.611&0.759&0.789&0.955&0.987\\
+      chakrabarti\cite{chakrabarti2016depth}&0.149&0.118&0.620&-&0.806&0.953&0.988\\
+      Laina\cite{laina2016deeper}&0.194&0.101&0.584&-&0.811&0.953&0.988\\
+      Xu\cite{xu2018structured}&\textbf{0.125}&0.135&0.597&0.593&0.806&0.952&0.986\\
+      Lee\cite{lee2019monocular}&0.131&\textbf{0.087}&\textbf{0.538}&\textbf{0.180}&\textbf{0.837}&\textbf{0.971}&\textbf{0.994}\\
+      Ours(VGG)&0.141&0.115&0.610&0.445&0.798&0.942&0.988\\
+      Ours(Res101)&0.138&0.113&0.597&0.367&0.812&0.963&\textbf{0.994}\\
+      \bottomrule
+    \end{tabular}
+  \end{table*}
+  \begin{table*}[htb]
+    \centering
+    \caption{单目深度估计网络在KITTI数据集上的效果对比，最佳结果使用加粗处理}
+    \label{tab:kitti cls quantitative result}
+    \begin{tabular}{c|cccc|ccc}
+      \toprule
+      \multirow{2}{*}{方法} & \multicolumn{4}{c}{数值越低效果越好}&\multicolumn{3}{|c}{数值越高效果越好}\\
+      & Rel Abs & Rel Sq & RMSE& RMSE $log$ &$\delta<1.25$ &$\delta<1.25^2$ & $\delta<1.25^3$ \\   
+      \midrule            
+      Saxena\cite{Make3D}&0.280&3.012&8.734&0.361&0.601&0.820&0.928\\
+      Eigen\cite{eigen2014depth}&0.190&1.515&7.156&0.270&0.692&0.899&0.967\\
+      Liu\cite{liu2015learning}&0.217&1.841&6.986&0.289&0.647&0.882&0.961\\
+      Kuznietsov\cite{kuznietsov}&0.113&0.741&4.621&0.189&0.862&0.960&0.986\\
+      Chen\cite{2019semantic}&0.102&0.890&5.203&0.183&0.863&0.955&0.984\\
+      Xu\cite{xu2018structured}&0.122&0.897&4.677&-&0.818&0.954&0.985\\
+      Fu\cite{FuCVPR18-DORN}&\textbf{0.072}&0.376&\textbf{3.056}&\textbf{0.132}&\textbf{0.915}&\textbf{0.980}&\textbf{0.993}\\
+      Ours(VGG)&0.120&0.144&4.737&0.207&0.837&0.947&0.964\\
+      Ours(Res101)&0.117&\textbf{0.142}&4.643&0.198&0.809&0.952&0.964\\
+      \bottomrule
+    \end{tabular}
+  \end{table*}
+本节针对网络在KITTI和NYU depth两个数据集上的表现进行了对比实验，
+实验选取了领先性能的方法和具有里程碑性质的方法进行了对比。
+NYU depth数据集的表现对比如表
+\ref{tab:nyu cls quantitative result}所示。
+本章所提出方法在各项指标上都达到了领先水平，其中在$\delta<1.25^3$
+的指标上达到了最优。相比骨干网络使用VGG，骨干网络使用ResNet101
+取得的效果普遍更加优秀，大约有2.1\%的效果提升。
+
+本节还在KITTI数据集上对网络进行了测试，各项指标表现如表
+\ref{Pixel_cla_KITTI_visualization_result}所示。
+实验选取了Saxena\cite{Make3D}、Eigen\cite{eigen2014depth}、
+Liu\cite{liu2015learning}、Kuznietsov\cite{kuznietsov}
+与近两年的领先方法Xu\cite{xu2018structured}、
+Fu\cite{FuCVPR18-DORN}作为基准。与
+室内数据集NYU depth相比，像素分类网络在Sq rel表现更好，
+达到了方法最优结果。Xu等人\cite{xu2018structured}
+在Rel Abs, RMSE RMSE$\log$,以及另外误差像素所占百分比几个
+指标上表现优异，达到了最优结果。最后两行分别展示了使用VGG
+和ResNet101作为骨干网络的结果，ResNet网络表现仍然优于
+VGG网络，大约有2\%的效果提升。在错误像素所占百分比指标上，
+三种指标表现均低于室内数据集NYU depth，这可能与室外数据集
+深度范围较大，类别间的深度相差较大造成的。
+
+\subsection{视觉结果}
+\begin{figure*}[htb]
+  \centering
+  \begin{subfigure}{0.24\linewidth}
+  \begin{minipage}[b]{1\linewidth}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/1rgb.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/2rgb.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/3rgb.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/4rgb.png}
+  \end{minipage}
+  \caption{RGB图像}
+  \end{subfigure}
+  \begin{subfigure}{0.24\linewidth}
+  \begin{minipage}[b]{1\linewidth}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/1gt.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/2gt.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/3gt.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/4gt.png}
+  \end{minipage}
+  \caption{真实深度图}
+  \end{subfigure}
+  \begin{subfigure}{0.24\linewidth}
+  \begin{minipage}[b]{1\linewidth}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/1res.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/2res.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/3res.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/4res.png}
+  \end{minipage}
+  \caption{本章方法}
+  \end{subfigure}
+  \begin{subfigure}{0.24\linewidth}
+  \begin{minipage}[b]{1\linewidth}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/1eigen.png}\vspace{3.5pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/2eigen.png}\vspace{3.5pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/3eigen.png}\vspace{3.5pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_kitti/4eigen.png}
+  \end{minipage}
+  \caption{Liu\cite{liu2015learning}}
+  \end{subfigure}
+  \caption{像素分类单目深度估计网络在KITTI数据集上的可视化结果，
+  （a）为RGB图像，（b）为真实的深度标注，（c）为本章方法
+  预测结果，（d）为Liu\cite{liu2015learning}预测结果。}
+  \label{Pixel_cla_KITTI_visualization_result}
+  \end{figure*}
+\begin{figure*}[htb]
+  \centering
+  \begin{subfigure}{0.24\linewidth}
+  \begin{minipage}[b]{1\linewidth}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/1rgb.jpg}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/2rgb.jpg}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/3rgb.jpg}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/4rgb.jpg}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/5rgb.jpg}
+  \end{minipage}
+  \caption{RGB图像}
+  \end{subfigure}
+  \begin{subfigure}{0.24\linewidth}
+  \begin{minipage}[b]{1\linewidth}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/1gt.jpg}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/2gt.jpg}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/3gt.jpg}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/4gt.jpg}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/5gt.jpg}
+  \end{minipage}
+  \caption{真实深度图}
+  \end{subfigure}
+  \begin{subfigure}{0.24\linewidth}
+  \begin{minipage}[b]{1\linewidth}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/1res.jpg}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/2res.jpg}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/3res.jpg}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/4res.jpg}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/5res.jpg}
+  \end{minipage}
+  \caption{本章方法}
+  \end{subfigure}
+  \begin{subfigure}{0.24\linewidth}
+  \begin{minipage}[b]{1\linewidth}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/1eigen.jpg}\vspace{3.5pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/2eigen.jpg}\vspace{3.5pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/3eigen.jpg}\vspace{3.5pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/4eigen.jpg}\vspace{3.5pt}
+  \includegraphics[width=1\linewidth]{figure/Pixel_cla_nyu/5eigen.jpg}
+  \end{minipage}
+  \caption{Eigen\cite{eigen2014depth}}
+  \end{subfigure}
+  \caption{像素分类单目深度估计网络在NYU depth数据集上的可视化结果，
+  （a）为RGB图像，（b)为真实深度图，（c)为本章方法，（d）为
+  Eigen\cite{eigen2014depth}结果。}
+  \label{Pixel_cla_nyu_visualization_result}
+  \end{figure*}
+本小节展示了网络预测的可视化结果，KITTI与NYU depth的预测结果
+分别在图\ref{Pixel_cla_KITTI_visualization_result}
+与图\ref{Pixel_cla_nyu_visualization_result}中进行展示。
+由于KITTI数据集提供的真实标注为稀疏的雷达点云，不便于
+观察，实验中将
+图\ref{Pixel_cla_KITTI_visualization_result}中的
+真实标注进行了填充。本章方法与真实标注相比，具有相同
+的深度层次结构以及基本的物体轮廓，网络在较远的情况
+如第二行中的较远场景重建效果一般，未能将更远的
+深度信息重建出来。与Liu\cite{liu2015learning}
+相比，估计深度更为精确，错误像素较少，而且物体边缘更加
+清晰。但是存在着边缘模糊，不锐利的问题。这可能是由于
+方法在得到每个深度的置信度后使用
+深度置信度与预测深度求期望操作造成的。
+
+方法在NYU数据集上与Eigen\cite{eigen2014depth}
+进行了对比，由于使用了更深的网络本章方法在预测结果上相比
+\cite{eigen2014depth}精确很多，错误像素较少，预测效果
+与真实标注十分相似。但是仔细观察会发现本网络
+的结果仍存在着边缘预测错误的问题，如第三行
+中的桌子边缘有着明显的错误，第四行图片中
+的人体轮廓已经丢失，第五行的椅子形状
+重建效果不好。而且整体仍然存在着模糊的问题。
+\vspace{-0cm}
+
+\subsection{特征注意力模块}
+\begin{table*}[htb]
+  \centering
+  \caption{特征注意力模块指标在KITTI数据集上表现对比}
+  \label{tab:FAM quantitative result}
+  \begin{tabular}{c|cccc|ccc}
+    \toprule
+    \multirow{2}{*}{方法} & \multicolumn{4}{c}{数值越低效果越好}&\multicolumn{3}{|c}{数值越高效果越好}\\
+    & Rel Abs & Rel Sq & RMSE& RMSE $log$ &$\delta<1.25$ &$\delta<1.25^2$ & $\delta<1.25^3$ \\   
+    \midrule            
+    FAM&0.117&0.142&4.643&0.198&0.809&0.952&0.964\\
+    Upsample&0.123&0.152&4.772&0.207&0.796&0.951&0.952\\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+本章设计了特征注意力模块，该模块应用在上采样过程中，
+对不同来源的特征图进行加权并将它们应用在重建过程中。
+本节通过实验对比来证明该模块对网络的性能提升。图\ref{FAM_visual}
+为FAM模块视觉效果对比图。实验中采用了对特征图进行直接
+双线性插值上采样作为对比。同样，本节对比了FAM与直接双线性插值上采样
+的指标表现对比，如表\ref{tab:FAM quantitative result}所示，
+添加FAM模块后各项指标均有一定的提升效果。
+\begin{figure*}[htb]
+  \centering
+  \begin{subfigure}{0.24\linewidth}
+    \begin{minipage}[b]{1\linewidth}
+    \includegraphics[width=1\linewidth]{figure/Without_FAM/0.png}\vspace{4pt}
+    \includegraphics[width=1\linewidth]{figure/Without_FAM/1.png}\vspace{4pt}
+    \includegraphics[width=1\linewidth]{figure/Without_FAM/8.png}\vspace{4pt}
+    \includegraphics[width=1\linewidth]{figure/Without_FAM/14.png}
+    \end{minipage}
+    \caption{RGB图像}
+  \end{subfigure}
+  \begin{subfigure}{0.24\linewidth}
+    \begin{minipage}[b]{1\linewidth}
+    \includegraphics[width=1\linewidth]{figure/FAM/0.png}\vspace{4pt}
+    \includegraphics[width=1\linewidth]{figure/FAM/1.png}\vspace{4pt}
+    \includegraphics[width=1\linewidth]{figure/FAM/8.png}\vspace{4pt}
+    \includegraphics[width=1\linewidth]{figure/FAM/14.png}
+    \end{minipage}
+    \caption{真实标注}
+  \end{subfigure}  
+  \begin{subfigure}{0.24\linewidth}
+  \begin{minipage}[b]{1\linewidth}
+  \includegraphics[width=1\linewidth]{figure/Without_FAM/00000_colors.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Without_FAM/00001_colors.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Without_FAM/00008_colors.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/Without_FAM/00014_colors.png}
+  \end{minipage}
+  \caption{无FAM}
+  \end{subfigure}
+  \begin{subfigure}{0.24\linewidth}
+  \begin{minipage}[b]{1\linewidth}
+  \includegraphics[width=1\linewidth]{figure/FAM/00000_colors.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/FAM/00001_colors.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/FAM/00008_colors.png}\vspace{4pt}
+  \includegraphics[width=1\linewidth]{figure/FAM/00014_colors.png}
+  \end{minipage}
+  \caption{FAM}
+  \end{subfigure}
+  \caption{FAM模块对网络性能影响的视觉效果对比}
+  \label{FAM_visual}
+\end{figure*}
+\section{本章小结}
+深度估计任务可以建模为像素分类的问题，本章提出了一种
+基于像素分类的单目深度估计网络，网络使用了编解码框架，
+首先对真实的深度图进行
+深度分类，使连续的深度图成为离散的深度区间标签，
+进而可以引导网络预测每个像素落在不同深度区间的概率。
+随后基于U-Net设计了一种编解码网络，与U-Net类似，
+这种编解码网络中加入了短路连接，使编码端的特征图可以直接加入到
+上采样重建中。为了使网络对重建过程中的编码端特征图和解码
+特征图有所侧重的关注，本章提出了特征注意力模块，
+实验结果表明像素分类算法
+可以达到领先的重建精度，并且在细节处理上表现更为优异。
+但是视觉结果表明该方法的预测图存在一定的模糊问题，这是可能是由于
+最终的深度值是各个备选深度与其概率求得的期望深度。
+另外像素分类的
+类别数目作为一个超参数，仍需要大量的实验去确定最优值。
+这些问题是将来需要继续进行研究解决的。

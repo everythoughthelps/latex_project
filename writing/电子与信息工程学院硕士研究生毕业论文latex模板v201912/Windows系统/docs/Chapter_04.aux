@@ -1,0 +1,174 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\citation{saxena2006learning}
+\citation{DABC,xu2018structured,chakrabarti2016depth,bts,2015semantic,lee2019monocular,godard2017unsupervised}
+\citation{DABC}
+\citation{DABC}
+\citation{bts}
+\citation{bts}
+\citation{DABC}
+\citation{DABC}
+\citation{bts}
+\citation{bts}
+\FN@pp@footnotehinttrue 
+\@writefile{toc}{\contentsline {chapter}{\numberline {第4章\hspace  {.3em}}自蒸馏单目深度估计框架}{29}{chapter.4}\protected@file@percent }
+\@writefile{lof}{\addvspace {10.0pt}}
+\@writefile{lot}{\addvspace {10.0pt}}
+\@writefile{loa}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}引言}{29}{section.4.1}\protected@file@percent }
+\citation{bts}
+\citation{bts}
+\citation{bts}
+\@writefile{lof}{\contentsline {figure}{\numberline {4-1}{\ignorespaces 图（a）左上：RGB图像，右上：真实深度标注，左下：Li\cite  {DABC}在NYU depth数据集上训练的预测图，右下：Li\cite  {DABC}在联合数据集上训练的预测图。 图（b)从上到下依次为：RGB图像，真实标注，BTS\cite  {bts}在KITTI数据集 上训练后的预测图，BTS\cite  {bts}在联合数据集上训练的预测图。\relax }}{30}{figure.caption.20}\protected@file@percent }
+\newlabel{train_once_problem}{{4-1}{30}{图（a）左上：RGB图像，右上：真实深度标注，左下：Li\cite {DABC}在NYU depth数据集上训练的预测图，右下：Li\cite {DABC}在联合数据集上训练的预测图。 图（b)从上到下依次为：RGB图像，真实标注，BTS\cite {bts}在KITTI数据集 上训练后的预测图，BTS\cite {bts}在联合数据集上训练的预测图。\relax }{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}自蒸馏单目深度估计框架}{30}{section.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}问题建模}{30}{subsection.4.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}网络结构}{30}{subsection.4.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4-2}{\ignorespaces 针对复杂场景的自蒸馏深度估计框架\relax }}{31}{figure.caption.21}\protected@file@percent }
+\newlabel{Stream of algorithm}{{4-2}{31}{针对复杂场景的自蒸馏深度估计框架\relax }{figure.caption.21}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {4.1}{\ignorespaces 自蒸馏单目深度估计训练框架工作流程\relax }}{31}{algocf.4.1}\protected@file@percent }
+\newlabel{alg:backbone_alg}{{12}{31}{网络结构}{AlgoLine.2.12}{}}
+\citation{eigen2014depth}
+\citation{bts}
+\citation{bts}
+\@writefile{lof}{\contentsline {figure}{\numberline {4-3}{\ignorespaces 自蒸馏框架使用的编解码器结构，采用了BTS\cite  {bts}网络\relax }}{32}{figure.caption.23}\protected@file@percent }
+\newlabel{BTS architecture}{{4-3}{32}{自蒸馏框架使用的编解码器结构，采用了BTS\cite {bts}网络\relax }{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}损失函数}{32}{subsection.4.2.3}\protected@file@percent }
+\citation{bts}
+\citation{bts}
+\citation{bts}
+\citation{paszke2019pytorch}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}实验结果与分析}{33}{section.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}实现细节}{33}{subsection.4.3.1}\protected@file@percent }
+\citation{eigen2014depth}
+\@writefile{lof}{\contentsline {figure}{\numberline {4-4}{\ignorespaces 编码器最后一层卷积核各通道之间的余弦相似性。 （a）为使用BTS\nobreakspace  {}\cite  {bts}采用常规训练框架时的卷积核通道相似性， （b）为使用本章提出的自蒸馏框架训练的卷积核通道相似性。绿色代表 相似性越低。\relax }}{34}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:conv_co}{{4-4}{34}{编码器最后一层卷积核各通道之间的余弦相似性。 （a）为使用BTS~\cite {bts}采用常规训练框架时的卷积核通道相似性， （b）为使用本章提出的自蒸馏框架训练的卷积核通道相似性。绿色代表 相似性越低。\relax }{figure.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4-5}{\ignorespaces 特征图个通道间的皮尔逊相关系数的统计直方图， 采用了[-1，-0.5]，[-0.5，0]，[0，0.5]，[0.5，1] 四个统计区间。（a）为使用常规训练框架训练得到的特征图的统计图， （b）为使用提出的自蒸馏框架训练得到的特征图的统计图。\relax }}{34}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:fea_co}{{4-5}{34}{特征图个通道间的皮尔逊相关系数的统计直方图， 采用了[-1，-0.5]，[-0.5，0]，[0，0.5]，[0.5，1] 四个统计区间。（a）为使用常规训练框架训练得到的特征图的统计图， （b）为使用提出的自蒸馏框架训练得到的特征图的统计图。\relax }{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}数据集与评价体系}{34}{subsection.4.3.2}\protected@file@percent }
+\citation{eigen2014depth}
+\citation{Make3D}
+\citation{eigen2014depth}
+\citation{liu2015learning}
+\citation{chakrabarti2016depth}
+\citation{laina2016deeper}
+\citation{lee2019monocular}
+\citation{FuCVPR18-DORN}
+\citation{xu2018structured}
+\citation{DABC}
+\citation{DABC}
+\citation{bts}
+\citation{bts}
+\citation{eigen2014depth}
+\citation{eigen2014depth}
+\citation{liu2015learning}
+\citation{chakrabarti2016depth}
+\citation{laina2016deeper}
+\citation{lee2019monocular}
+\citation{DABC}
+\citation{bts}
+\citation{bts}
+\citation{Make3D}
+\citation{eigen2014depth}
+\citation{liu2015learning}
+\citation{kuznietsov}
+\citation{godard2017unsupervised}
+\citation{zhou2017unsupervised}
+\citation{FuCVPR18-DORN}
+\citation{xu2018structured}
+\citation{DABC}
+\citation{DABC}
+\citation{bts}
+\citation{bts}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}定量结果}{35}{subsection.4.3.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4-1}{\ignorespaces 自蒸馏单目深度估计框架在NYU数据集的表现对比，最优结果使用加粗处理。\relax }}{35}{table.caption.25}\protected@file@percent }
+\newlabel{tab:nyu quantitative result}{{4-1}{35}{自蒸馏单目深度估计框架在NYU数据集的表现对比，最优结果使用加粗处理。\relax }{table.caption.25}{}}
+\citation{DABC}
+\citation{bts}
+\citation{FuCVPR18-DORN}
+\citation{bts}
+\citation{bts}
+\citation{FuCVPR18-DORN}
+\citation{FuCVPR18-DORN}
+\citation{zhou2017unsupervised}
+\citation{zhou2017unsupervised}
+\citation{bts}
+\citation{bts}
+\citation{FuCVPR18-DORN}
+\citation{zhou2017unsupervised}
+\citation{bts}
+\citation{bts}
+\citation{FuCVPR18-DORN}
+\citation{zhou2017unsupervised}
+\citation{bts}
+\citation{bts}
+\citation{FuCVPR18-DORN}
+\citation{zhou2017unsupervised}
+\citation{FuCVPR18-DORN}
+\citation{zhou2017unsupervised}
+\citation{bts}
+\@writefile{lot}{\contentsline {table}{\numberline {4-2}{\ignorespaces 自蒸馏单目深度估计框架在KITTI数据集表现对比，最优结果使用加粗处理。\relax }}{36}{table.caption.26}\protected@file@percent }
+\newlabel{tab:kitti quantitative result}{{4-2}{36}{自蒸馏单目深度估计框架在KITTI数据集表现对比，最优结果使用加粗处理。\relax }{table.caption.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}视觉效果}{36}{subsection.4.3.4}\protected@file@percent }
+\citation{bts}
+\@writefile{lof}{\contentsline {figure}{\numberline {4-6}{\ignorespaces 预测结果的可视化对比，对比图中的稀疏真实深度点云使用了 NYU depth提供的工具箱进行了填充。 请注意DORN\cite  {FuCVPR18-DORN}与SfmLearner\cite  {zhou2017unsupervised} 仅仅使用了KITTI数据集进行了训练，BTS\cite  {bts}与本章所用方法 均使用了复合数据集。热力图为最后一张图像的预测误差图， （$map_{error} = D_{gt} - D_{pre}$），左图为BTS\cite  {bts}预测误差图， 右图为本章框架的预测误差图。\relax }}{37}{figure.caption.27}\protected@file@percent }
+\newlabel{KITTI visualization result}{{4-6}{37}{预测结果的可视化对比，对比图中的稀疏真实深度点云使用了 NYU depth提供的工具箱进行了填充。 请注意DORN\cite {FuCVPR18-DORN}与SfmLearner\cite {zhou2017unsupervised} 仅仅使用了KITTI数据集进行了训练，BTS\cite {bts}与本章所用方法 均使用了复合数据集。热力图为最后一张图像的预测误差图， （$map_{error} = D_{gt} - D_{pre}$），左图为BTS\cite {bts}预测误差图， 右图为本章框架的预测误差图。\relax }{figure.caption.27}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}算法复杂度分析}{37}{subsection.4.3.5}\protected@file@percent }
+\citation{DABC}
+\citation{bts}
+\@writefile{lof}{\contentsline {figure}{\numberline {4-7}{\ignorespaces 使用复合数据集训练在NYU数据集上预测的表现对比: 第一行RGB图像，第二行真实标注，第三行为使用自蒸馏框架训练的预测结果， 第四行为使用常规训练的预测结果。\relax }}{38}{figure.caption.28}\protected@file@percent }
+\newlabel{nyu visualization result}{{4-7}{38}{使用复合数据集训练在NYU数据集上预测的表现对比: 第一行RGB图像，第二行真实标注，第三行为使用自蒸馏框架训练的预测结果， 第四行为使用常规训练的预测结果。\relax }{figure.caption.28}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}本章小结}{39}{section.4.4}\protected@file@percent }
+\FN@pp@footnotehinttrue 
+\@setckpt{docs/Chapter_04}{
+\setcounter{page}{40}
+\setcounter{equation}{4}
+\setcounter{enumi}{3}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{0}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{4}
+\setcounter{section}{4}
+\setcounter{subsection}{0}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{7}
+\setcounter{table}{2}
+\setcounter{caption@flags}{0}
+\setcounter{continuedfloat}{0}
+\setcounter{subfigure}{0}
+\setcounter{subtable}{0}
+\setcounter{parentequation}{0}
+\setcounter{lstnumber}{1}
+\setcounter{LT@tables}{0}
+\setcounter{LT@chunks}{0}
+\setcounter{AlgoLine}{12}
+\setcounter{algocfline}{2}
+\setcounter{algocfproc}{2}
+\setcounter{algocf}{1}
+\setcounter{lofdepth}{1}
+\setcounter{lotdepth}{1}
+\setcounter{nlinenum}{0}
+\setcounter{pp@next@reset}{1}
+\setcounter{@fnserial}{0}
+\setcounter{cp@cntr}{0}
+\setcounter{theorem}{0}
+\setcounter{proposition}{0}
+\setcounter{lemma}{0}
+\setcounter{corollary}{0}
+\setcounter{definition}{0}
+\setcounter{remark}{0}
+\setcounter{eg}{0}
+\setcounter{NAT@ctr}{0}
+\setcounter{Item}{17}
+\setcounter{Hfootnote}{0}
+\setcounter{Hy@AnnotLevel}{0}
+\setcounter{bookmark@seq@number}{24}
+\setcounter{BackrefHyperFootnoteCounter}{0}
+\setcounter{lstlisting}{0}
+\setcounter{section@level}{0}
+}

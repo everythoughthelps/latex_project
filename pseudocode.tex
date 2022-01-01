@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage[ruled,vlined]{algorithm2e}
+\SetKw{KwBy}{by}
+
+\begin{document}
+
+\begin{algorithm}[h]
+    \caption{Value Iteration}
+    \KwIn{$c, K, n, p, u, \alpha$}
+      \KwOut{policy，convergeed $J_θ^*$}  
+      \BlankLine
+      Initialize $\theta=0.001, \delta=\inf$;
+      
+      \While{\textnormal{$\delta>\theta$}}
+    {
+      \For{$i=0$ \KwTo $n$}
+      {
+        $$J_{K+1}(i)=min⁡(k+\alpha(1-p) J_K (0)+\alpha pJ_K (1),c i+\alpha(1-p) J_k (i)+\alpha pJ_k (i+1)$$
+              $$δ =\vert  J_{K+1} (i)-J_K (i) \vert$$
+  
+        }
+      }
+      \For{$i=0$ \KwTo $n$}
+      {$$policy_{i} = argmin_{u\in U} (i+\alpha(1-p) J_K (i)+\alpha p J_k (i+1))$$}
+  
+  \end{algorithm}
+
+\begin{algorithm}[h]
+\caption{Policy Iteration}
+\KwIn{$c, K, n, p, u, \alpha, s$}
+  \KwOut{policy，converged $J_θ^*$}  
+  \BlankLine
+  Initialize $\theta=0.001, \delta=\inf, s=0$;
+  
+  \While{\textnormal{$\delta>\theta$}}
+{
+  \For{$i=0$ \KwTo $n$}
+  {
+    $$value_{expected}=0$$ \\
+  
+    $$value_{expercted}=\sum_{u\in U}p_u (K +\alpha \sum_{s\in S}J_k (i)$$
+
+    }
+  }
+
+  \For{$i=0$ \KwTo $n$}
+  {
+    $$policy_{i}= argmin_{u∈U} (i+\alpha(1-p) J_k (i)+\alpha pJ_k (i+1))$$}
+\end{algorithm}
+\end{document}

@@ -1,0 +1,102 @@
+%%
+% 摘要信息
+% 摘要内容应概括地反映出本论文的主要内容，主要说明本论文的研究目的、内容、方法、成果和结论。要突出本论文的创造性成果或新见解，不要与引言相 混淆。语言力求精练、准确，以 300—500 字为宜。
+% 关键词是供检索用的主题词条，应采用能覆盖论文主要内容的通用技术词条(参照相应的技术术语 标准)。按词条的外延层次排列（外延大的排在前面）。
+
+
+\cabstract{
+	随着人工智能技术的迅猛发展，人们对智能感知算法提出了更高的要求，
+	如何快速获得精确的场景信息成为学者们研究的重点。
+	其中场景的深度信息作为众多任务的关键信息，在诸多场景
+	如自动驾驶，3D物体检测，三维重建中
+	显得尤为重要。单目深度估计，即从单张RGB图像
+	中获取场景的深度具有很多优点：对硬件要求低，能耗低，
+	便于搭载等。但是单目深度估计对算法本身要求极高，因为
+	RGB图像在成像过程中将3D信息完全丢失，没有其他信息辅助的情况下，
+	很难将丢失的3D信息恢复。
+
+	本文首先对基于深度学习的单目深度估计技术进行了
+	调研，阐述了国内外的研究现状。随后对本文依赖的关键技术
+	进行简要讲解，包括深度学习算法，单目深度估计技术，
+	双目深度估计技术等。随后重点描述
+	围绕单目深度估计任务提出了两种基于深度学习算法的解决方案。
+	第一种将单目深度估计建模为像素分类问题，提出了
+	一种端到端的编解码网络，通过预测像素
+	在每个深度区间的置信度来进行深度估计。在解码过程中加入了
+	特征注意力模块，该模块可以使上采样网络对不同来源
+	的特征图进行加权，随后应用在重建过程中。客观实验
+	表明该算法在室内室外数据集均获得了较好的结果。
+
+	本文重点关注到单目深度估计网络在复杂多样场景上的鲁棒问题，
+	提出使用室内外复合数据集对网络进行训练。但是复合数据集
+	具有完全不同的数据分布，一方面网络很难拟合这些分布，
+	另一方面网络将多样的重建效果表达出来也同样困难。
+	为了解决这个问题本文在第四章重点描述了第二种解决方案：
+	自蒸馏单目深度估计框架。这种框架对室内外数据集同时采样，
+	两个场景的样本被送入不同的编码器，产生各个场景的特征图。
+	并提出了相异性损失
+	函数来扩大两个场景的特征图的间距，达到扩大
+	数据集类别外间距的效果，使网络可以针对不同的场景提取
+	特定的特征。对比实验表明该框架有效地解决了网络在面对
+	多样场景时的性能退化现象。适用多样数据集时，
+	自蒸馏深度估计框架使所有指标均获得一定的提升，其中
+	某些指标甚至超越了
+	在单一数据集
+	上的表现，达到了最优效果。更重要的是该框架适用于
+	大部分编解码网络，移植性强。
+}
+% 中文关键词(每个关键词之间用“;”分开,最后一个关键词不打标点符号。)
+\ckeywords{单目深度估计；像素分类；特征注意力模块；自蒸馏；多样场景 }
+
+\eabstract{
+	With the rapid development of artificial intelligence 
+technology,  people put forward higher requirements 
+for intelligent sensing algorithms. Obtaining 
+accurate scene information quickly has become 
+the focus of research. Depth information of the 
+scene is wildly used in many tasks, 
+such as autopilot, 3D object detection, 3D reconstruction.
+Monocular depth estimation, obtaining the depth 
+of the scene from a single RGB image, has many advantages, 
+such as lower hardware requirements, less energy consumption, 
+and easy to carry. However, monocular depth estimation has a
+high demand on the algorithm itself, because the 3D information
+ of RGB image is completely lost in the imaging process,
+  and it is difficult to recover the 3D information without
+   other information assistance. 
+
+ Firstly, this paper investigates (MDE)
+  technology based on deep learning techniques, 
+  and describes the 
+  domestic and foreign research status. Then the key 
+  technologies of this paper are briefly explained, 
+  including deep learning algorithms, monocular depth 
+  estimation technologes, binocular depth estimation 
+  technologies and so on. Then, focusing on the monocular depth 
+  estimation task, two deep learning-based solutions 
+  algorithm are proposed.
+  In the first method, monocular depth estimation is 
+  modeled as a pixel classification problem, 
+  and an end-to-end encode-decode network is proposed 
+  to estimate depth by predicting the confidence of 
+  pixels in each depth interval. In the decoding process, 
+  the feature attention module is loaded, 
+  which enables the up sampling network to weight 
+  the feature maps from different sources, and then 
+  applies them in the reconstruction process. 
+  Quantative experiments show that the algorithm 
+  achieves good results on both indoor and outdoor dataset.
+
+  We focus on the robust performance of MDE networks,
+  to tackle this problem, we propose a self-distillation MDE network to 
+  improve the generalization ability across different scenes. 
+  Specifically, we design a student encoder that extracts features from 
+  two datasets of indoor and outdoor scenes, respectively. After that, 
+  we introduce a dissimilarity loss to pull apart encoded features of different 
+  scenes in the feature space. In doing so, our self-distillation 
+  MDE network can learn the depth estimation of two different datasets. 
+  To our best knowledge, we are the first one to tackle the generalization problem across datasets of different scenes. Experiments demonstrate that our method achieves competitive estimation performance. 
+}
+% 英文文关键词（关键词之间用逗号隔开，最后一个关键词不打标点符号。）
+\ekeywords{monocular depth estimation, pixel classification, 
+feature attention module, self-distillation, various scenes}

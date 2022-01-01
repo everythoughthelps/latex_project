@@ -1,0 +1,64 @@
+This is BibTeX, Version 0.99d (TeX Live 2020/W32TeX)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: docs/Chapter_01.aux
+A level-1 auxiliary file: docs/Chapter_02.aux
+A level-1 auxiliary file: docs/Chapter_03.aux
+A level-1 auxiliary file: docs/Chapter_04.aux
+A level-1 auxiliary file: docs/Chapter_05.aux
+The style file: Bibliography/bibtex-style/gbt7714-2005.bst
+A level-1 auxiliary file: docs/Achievement.aux
+A level-1 auxiliary file: docs/Achieve.aux
+A level-1 auxiliary file: docs/Acknowledgements.aux
+A level-1 auxiliary file: docs/Postscript.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: Bibliography/Reference.bib
+Warning--Require address: middlebury
+Warning--Require address: coco
+Warning--Require address: unet
+Warning--Require address: DABC
+Warning--Require journal: bts
+You've used 45 entries,
+            3107 wiz_defined-function locations,
+            960 strings with 14717 characters,
+and the built_in function-call counts, 90836 in all, are:
+= -- 10141
+> -- 174
+< -- 399
++ -- 8050
+- -- 621
+* -- 2208
+:= -- 10173
+add.period$ -- 0
+call.type$ -- 45
+change.case$ -- 258
+chr.to.int$ -- 0
+cite$ -- 50
+duplicate$ -- 13012
+empty$ -- 3501
+format.name$ -- 516
+if$ -- 24453
+int.to.chr$ -- 0
+int.to.str$ -- 45
+missing$ -- 0
+newline$ -- 162
+num.names$ -- 47
+pop$ -- 1243
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 805
+stack$ -- 0
+substring$ -- 10998
+swap$ -- 2107
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 5
+while$ -- 1182
+width$ -- 47
+write$ -- 593
+(There were 5 warnings)
