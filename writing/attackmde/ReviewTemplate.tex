@@ -177,7 +177,16 @@ when it comes to relatively stationary objects.
 To address this, Godard et al. proposed a multi-scale reconstruction
 loss and a automasking approach to ignore relatively stationary objects.
 \subsection{Patch Attack}
+Adding perturbations to images has a limit: 
+the imperceptive noise can not be captured by camera.
+Recently, researchers turn to generating adversarial examples with
+patches. It can be captured by camera and it can implement to physical
+world. The only question is, how to make it concealed.
 
+Mahmood et al. attacked FRS using real printed glass frames, 
+with which the FRS can not recognize the person or recognize him
+as someone else in the system. The pattern of these frames are
+generated optimizied by an objective function.
 
 \section{Approach}
 In this section, we first introduce some preliminaries about our noisy label learning. Subsequently, we give a brief introduction to our baseline method DivideMix\cite{li2020dividemix}. Finally, we illustrate our proposed complementary label learning approach.
