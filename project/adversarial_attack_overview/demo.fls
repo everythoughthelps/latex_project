@@ -1,0 +1,6 @@
+PWD d:/Github/latex_project/project/adversarial_attack_overview
+INPUT c:/Program Files/texlive/2021/texmf.cnf
+INPUT c:/Program Files/texlive/2021/texmf-dist/web2c/texmf.cnf
+INPUT c:/Program Files/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT d:/Github/latex_project/project/adversarial_attack_overview/demo.tex
+OUTPUT demo.log
