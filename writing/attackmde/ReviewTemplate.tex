@@ -180,6 +180,15 @@ They first estimate relative depth by utilizing rank-1 property,
 then the final depth maps are reconstructed through these relative 
 depth maps.
 
+
+\begin{figure*}[h]
+	\centering
+	\includegraphics[width=1\textwidth]{imgs/stream.pdf}
+	\caption{Stream of our MDE attacking method. 
+	The whole stream consists of two phases: (a) location
+	searching phase and (b) altering appearance phase.}
+	\label[]{}
+\end{figure*}
 \subsubsection{Unsupervised}
 Although there exist some datasets with ground truth depth 
 annotation, dense and accurate depth maps are labor-consuming and rare. 
@@ -257,14 +266,6 @@ transformation matrix, then they are deployed on the camera's lens.
 
 
 \section{Method}
-\begin{figure*}[h]
-	\centering
-	\includegraphics[width=1\textwidth]{imgs/stream.pdf}
-	\caption{Stream of our MDE attacking method. 
-	The whole stream consists of two phases: (a) location
-	searching phase and (b) altering appearance phase.}
-	\label[]{}
-\end{figure*}
 In this section, we are going to present our 
 MDE attacking method in detail. we first formulize the problem 
 in Sec~\ref{Problem Statement}. 
@@ -377,7 +378,8 @@ This location searching process can be represented as:
 As indicated in Eq.\ref{new coordinate},
 the coordinates of the target pixels $G'_i$ are continuous values. 
 We adopt bilinear interpolation to determine the value of 
-the target pixel. Bilinear interpolation mechanism is proved 
+the target pixel. 
+Bilinear interpolation mechanism is proved 
 to be differentiable in 
 \textit{spatial transformer networks}~\cite{stn}.
 
@@ -386,12 +388,24 @@ to be differentiable in
 %the pixel coordinates form a grid$H \times W \times 2$.
 
 \paragraph{transformation}
-The location problem is settled by optimizing $\mathbf{T}_\Theta$,
+The location problem is settled by optimizing an
+affine transform matrix
+$\mathbf{A}_\theta$,
 next we address altering the appearance of the patch.
-In this phase, we utilize vanishing points for better 
+When we alter the appearance of the patch, we followed 
+the principle of perspective drawing: 
+the vanishing point is where all parallel lines 
+intersect and is always on the horizon line.
+Using the example shown in fig1 can clearly 
+illustrate what this means.
+\begin{figure}
+\includegraphics[width=1\linewidth]{imgs/Perspective.jpg}	
+\end{figure}
+So in this phase, we utilize vanishing points for better 
 visual quality. We first detect straight lines in the attacked 
-scene with Hough transform, then we compute the vanishing 
+scene with \textit{Hough} transform, then we compute the vanishing 
 point using lines with a longer length.
+
 
 
 \subsection{Objective Function}
