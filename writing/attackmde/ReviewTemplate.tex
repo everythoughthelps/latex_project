@@ -187,7 +187,7 @@ depth maps.
 	\caption{Stream of our MDE attacking method. 
 	The whole stream consists of two phases: (a) location
 	searching phase and (b) altering appearance phase.}
-	\label[]{}
+	\label[]{stream}
 \end{figure*}
 \subsubsection{Unsupervised}
 Although there exist some datasets with ground truth depth 
@@ -392,6 +392,7 @@ The location problem is settled by optimizing an
 affine transform matrix
 $\mathbf{A}_\theta$,
 next we address altering the appearance of the patch.
+
 When we alter the appearance of the patch, we followed 
 the principle of perspective drawing: 
 the vanishing point is where all parallel lines 
@@ -407,11 +408,20 @@ illustrate this principle.
 	remain parallel to each other.}
 	\label[]{perspective}
 \end{figure}
-So in this phase, we utilize vanishing point for better 
-visual quality. We first detect straight lines in the attacked 
-scene with \textit{Hough} transform, then we compute the vanishing 
-point using lines with a longer length.
-
+For better visualization quality,
+in this phase, we utilize vanishing point.
+We first detect straight lines in the attacked 
+scene with \textit{Hough} transform, then we obtain 
+the vanishing point by extending this lines 
+and computing their intersection.
+Based on the principle of perspective drawing, as illustrated
+in Fig~\ref{stream}, if we connect the left-top point and 
+vanishing point, the right-top point should lay on this 
+line. Same on the bottom line.
+We get four corrected corner coordinates, with which we 
+alter the appearance of the patch. The perspective
+transforms in this phase are implemented with 
+\textit{OpenCV}. 
 
 
 \subsection{Objective Function}
