@@ -396,16 +396,18 @@ When we alter the appearance of the patch, we followed
 the principle of perspective drawing: 
 the vanishing point is where all parallel lines 
 intersect and is always on the horizon line.
-Using the example shown in fig1 can clearly 
+Fig~\ref{perspective} clearly 
 illustrate what this means.
 \begin{figure}
-\includegraphics[width=1\linewidth]{imgs/Perspective.jpg}	
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/perspective.pdf}	
+	\label[]{perspective}
+	\caption{Diagram of \textit{single point perspective} drawing.}
 \end{figure}
-So in this phase, we utilize vanishing points for better 
+So in this phase, we utilize vanishing point for better 
 visual quality. We first detect straight lines in the attacked 
 scene with \textit{Hough} transform, then we compute the vanishing 
 point using lines with a longer length.
-
 
 
 \subsection{Objective Function}
@@ -437,11 +439,6 @@ to maximize the error between prediction maps and annotated maps:
 We use $L_1, L_2$ and Huber loss in our subsequent experiments.
 
 \paragraph{Visualization Quality}
-		\begin{align}
-			\label[]{perspective}
-		\mathcal{L}_{perspective}
-		\end{align}
-
 For better inconspicuousness, we camouflage the patch 
 as graffiti, which can be easily found on white and 
 blank walls. We design Blank loss to help the patch to find
@@ -450,7 +447,8 @@ blank position in the area:
 		\label[]{blank}
 	\mathcal{L}_{blank} =\sqrt{\partial_x^2 (m \odot I) + \partial_y^2 (m \odot I) }
  	\end{align}
-Besides, we designed white loss to make the 'graffiti' more likely to be sticked 
+Besides, we designed white loss to make the 'graffiti' more 
+likely to be sticked 
 in the white area:
 \begin{align}
 	\mathcal{L}_{white} = \min (1-\sum m \odot I, 0)
@@ -491,7 +489,7 @@ MAE values, respectively.
 As you can see from Fig~\ref{patch_on_scenes}, 
 our method can accurately search the sensitive area of the image.
 Note that to emphasize our search effect, we didn't use the 
-Blank (eq~\ref{blank}) and Perspective (eq~\ref{perspective}) 
+Blank (eq~\ref{blank})
 loss function in this experiment. 
 \begin{figure*}
 	\includegraphics[width=1\textwidth]{imgs/patch_on_scenes.pdf}
