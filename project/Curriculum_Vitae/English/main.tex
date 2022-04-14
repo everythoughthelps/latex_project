@@ -1,0 +1,125 @@
+%% start of file `new.tex'.
+%% Copyright 2006-2012 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,roman]{moderncv}   % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv themes
+\moderncvstyle{classic}                        % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}                          % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\rmdefault}    % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                             % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+%\usepackage[utf8]{inputenc}                  % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                         % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}           % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}      % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\firstname{Meng}
+\familyname{Pan}
+\title{Curriculum Vitae}               % optional, remove the line if not wanted
+%\address{Address}    % optional, remove the line if not wanted
+\mobile{+86~(185)~6608~6908}                     % optional, remove the line if not wanted
+%\phone{+2~(345)~678~901}                      % optional, remove the line if not wanted
+%\fax{+3~(456)~789~012}                        % optional, remove the line if not wanted
+\email{panm9@mail2.sysu.edu.cn}                          % optional, remove the line if not wanted
+\homepage{https://github.com/everythoughthelps}                    % optional, remove the line if not wanted
+%\extrainfo{additional information}            % optional, remove the line if not wanted
+%\photo[110pt][0.01pt]{picture.jpg}                  % '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file; optional, remove the line if not wanted
+%\quote{Some quote (optional)}                 % optional, remove the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                     % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+
+\section{Education}
+\cventry{2018--present}{M.Sc. on Detection Technology and Automatic Equipment}{School of Intelligent Systems Engineering }{Sun Yat-Sun University, GuangZhou, China}{}{}
+
+\cventry{2013--2017}{B.Sc. on Traffic and Transportation}{School of Traffic and Transportation}{Shijiazhuang Tiedao University, Shijiazhuang, China}{}{}
+
+
+%\section{Research Interests}\cvlistitem {\textbf{Research Interest Title 1} \\Description}
+%\cvlistitem {\textbf{Research Interest Title 2} \\Description}
+%\cvlistitem {\textbf{Research Interest Title 3} \\Description}
+%\cvlistitem {\textbf{Research Interest Title 4} \\Description}
+%
+%\section{Honors \& Awards}
+%\cvlistitem{Honor1 Description }
+%\cvlistitem{Honor2 Description }
+%\cvlistitem{Honor3 Description }
+%\cvlistitem{Honor4 Description }
+
+
+\section{Research Experiences}
+
+\cventry{2019.11--20205}{Monocular Depth Estimation Based on Pixel Classification}{accepted on China Automatic Congress 2020}{}{}{\href{address}{https://github.com/everythoughthelps/depth-estimation}}
+\cvlistitem {We model monocular depth estimation as a pixel level classification problem, and propose a Feature Attention Module to make the feature maps weighted to participate in the depth reconstruction
+}
+\cventry{2020.7--2021.1}{Self-distillation Network for Indoor and Outdoor
+Monocular Depth Estimation}{under review on Multimedia Tools and Applications}{}{}{\href{address}{https://github.com/everythoughthelps/SDMDE}}
+\cvlistitem {In order to improve the robustness of monocular depth estimation algorithm, we creatively train the network using indoor and outdoor composite dataset(KITTI+NYU) at the same time
+}
+\cvlistitem{When faced with composite dataset, the performance of the network has been degraded in varying degrees, it is because the complex distribution is a challenge to the expressiveness and fitting ability}
+\cvlistitem{We proposed a framework based on konwledge distillation. Experiments show that our framework can improve the expressiveness and fitting ability of the network, and reduce the degradation when faced with composite dataset}
+%\section{Course Projects}
+%
+%\cvlistitem{\textbf{Course Title 1} \\ \textit{Project Title:} Project Descriptions. }
+%\cvlistitem{\textbf{Course Title 2} \\ \textit{Project Title:} Project Descriptions. }
+%\cvlistitem{\textbf{Course Title 3} \\ \textit{Project Title:} Project Descriptions. }
+%
+\section{Publications}
+\cvlistitem{Author1 and Author2, "Conference Paper Title," \textit{conference Name}, City, country, year, pp. 1-last page.}
+\cvlistitem{Author1 and Author2, "journal Paper Title," in \textit{journal Name}, vol. 00, no. 0, pp. 00-00, Month, year.}
+
+
+\section{Activities}
+\cvlistitem {Assistant of Unity, an engine of game development}
+\cvlistitem {Ministrater of the deep learning server, mainly responsible for the maintenance of deep learning servers in the school, including network maintenance, disk management, environment configuration, etc.}
+
+
+\section{Skills}
+\cvlistitem {\textbf{Python, C++, shell} \\}
+\cvlistitem {\textbf{Linux, Git. Github, Latex} \\\ }
+
+\section{Languages}
+\cvlistitem {\textbf{Language:English} \\ IELTS: 6 (Reading:6.5, Listening:5.5, Speaking:5.5, Writing:6) \\
+CET-6 (448)}
+
+%\cvlistitem {\textbf{Language:} Level \\ Exam: 96/120 (Reading:00, Listening:00, Speaking:00, Writing:00)}
+%\cvlistitem {\textbf{Language:} Level \\ Exam: 96/120 (Reading:00, Listening:00, Speaking:00, Writing:00)}
+
+
+\section{Interests}
+\cvitem{hobby 1}{Description}
+\cvitem{hobby 2}{Description}
+\cvitem{hobby 3}{Description}
+
+%\section{References}
+%\cvlistitem{\textbf{SupervisorName} \\ Department \\Faculty \\University \\City, Country\\email@email.com\\}
+%
+\end{document}
+
+
+%% end of file `template.tex'.
+

@@ -1,0 +1,157 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% "ModernCV" CV and Cover Letter
+% LaTeX Template
+% Version 1.1 (9/12/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Xavier Danaux (xdanaux@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template requires the moderncv.cls and .sty files to be in the same 
+% directory as this .tex file. These files provide the resume style and themes 
+% used for structuring the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,sans]{moderncv} % Font sizes: 10, 11, or 12; paper sizes: a4paper, letterpaper, a5paper, legalpaper, executivepaper or landscape; font families: sans or roman
+\usepackage{xeCJK}
+\setCJKmainfont{Droid Sans Fallback}
+\setCJKsansfont{WenQuanYi Zen Hei}
+\setCJKmonofont{cwTeXFangSong}
+\moderncvstyle{classic} % CV theme - options include: 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue} % CV color - options include: 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+
+\usepackage[scale=0.85]{geometry} % Reduce document margins
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{潘孟} % Your first name
+\familyname{} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+%\title{Curriculum Vitae}
+\address{邮编510006}{广州市番禺区大学城外环东路132号}
+\mobile{(+86) 18566086908}
+%\phone{(000) 111 1112}
+%\fax{(000) 111 1113}
+\email{panm9@mail2.sysu.edu.cn}
+%\homepage{staff.org.edu/~jsmith}{staff.org.edu/$\sim$jsmith} % The first argument is %the url for the clickable link, the second argument is the url displayed in the %template - this allows special characters to be displayed such as the tilde in this %example
+%\extrainfo{additional information}
+%\photo[70pt][0.4pt]{picture} % The first bracket is the picture height, the second is %the thickness of the frame around the picture (0pt for no frame)
+\quote{}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\makecvtitle % Print the CV title
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\section{学历}
+
+\cventry{2013--2017}{交通运输}{交通运输学院}{石家庄铁道大学}{}{
+}  % Arguments not required can be left empty
+\cventry{2018--至今}{检测技术与自动化装置}{智能工程学院}{中山大学}{}{
+}
+\vspace{-0.8cm}
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+\section{研究经历}
+%
+\cventry{2019.7--2019.11}{对常规显著信号提取的pooling改进：different pooling}{}{}{}{
+\begin{itemize}
+\item \href{address}{https://github.com/everythoughthelps/different\_pooling}
+\item 将传统的提取核内最显著信号的maxpooling改为提取特征值和核内平均特征值相差最大的different pooling。
+\end{itemize}
+}
+\vspace{0.5cm}
+\cventry{2019.11--2020.5}{基于像素分类的单目深度估计网络}{CAC2020独立一作}{}{}{
+\begin{itemize}
+\item \href{address}{https://github.com/everythoughthelps/depth-estimation}
+\item 将深度图预测视为像素在通道维度上的分类问题。网络骨干使用unet,在decoder上添加
+特征注意力模块(Feature Attention Module)，在最后的输出层将像素值与通道信息解耦合，在NYUv2深度数据集获得了RMSE 0.579的结果。
+\end{itemize}
+}
+\vspace{0.5cm}
+\cventry{2020.7-2021.1}{Self-distillation Network for Indoor and Outdoor 
+Monocular Depth Estimation}{在审}{Multimedia Tools and Applications}{}{
+\begin{itemize}
+\item \href{address}{https://github.com/everythoughthelps/SDMDE}
+\item 为了解决单目深度估计的鲁棒性问题，我们首创性地使用室内、室外数据集对网络进行同时训
+练。
+\item 实验表明单纯的使用复合数据集并没有使网络的性能提升，相反会出现退化现象，这是由于多样的
+数据分布对网络的拟合能力和表达能力是一种挑战，所以我们提出了自蒸馏单目深度估计框架。
+实验证明我们的框架对网络的表达能力和拟合能力均有一定的提升，减弱了网络在复合数据集上的退化现
+象。
+\end{itemize}
+}
+
+%----------------------------------------------------------------------------------------
+%	COMPUTER SKILLS SECTION
+%----------------------------------------------------------------------------------------
+
+\section{专业能力}
+\cvitem{}{熟悉Python,对C++,shell有一定了解}
+\cvitem{}{有丰富Linux系统开发经验，熟练使用pycharm,vim等开发工具}
+\cvitem{}{熟练使用Git以及Github等代码管理工具进行团队协作开发}
+\cvitem{}{熟练使用Pytorch深度学习框架，对TensorFlow有一定了解}
+\cvitem{}{熟练使用OpenCV,PIL,Numpy,Matplotlib等模块}
+\cvitem{}{熟练使用LaTeX，丰富的论文编辑经验}
+
+%----------------------------------------------------------------------------------------
+%	LANGUAGES SECTION
+%----------------------------------------------------------------------------------------
+
+\section{语言}
+%\cvitem{英文} {四级、 六级、 雅思6.0}
+\cventry{}{四级}{六级}{雅思6.0}{}{}
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+%\bigskip
+
+\section{其他经历}
+\cvitem{}{虚拟现实技术助教，主要负责Unity软件的教学。}
+\cvitem{}{深度学习服务器管理员，主要负责学院所有深度学习服务器的维护，包括网络维护，磁盘管理，环境搭建等。}{}{}
+
+%----------------------------------------------------------------------------------------
+%	COVER LETTER
+%----------------------------------------------------------------------------------------
+
+% To remove the cover letter, comment out this entire block
+
+%\clearpage
+
+%\recipient{HR Departmnet}{Corporation\\123 Pleasant Lane\\12345 City, State} % Letter recipient
+%\date{\today} % Letter date
+%\opening{Dear Sir or Madam,} % Opening greeting
+%\closing{Sincerely yours,} % Closing phrase
+%\enclosure[Attached]{curriculum vit\ae{}} % List of enclosed documents
+
+%\makelettertitle % Print letter title
+
+%\lipsum[1-3] % Dummy text
+
+%\makeletterclosing % Print letter signature
+
+%----------------------------------------------------------------------------------------
+\end{document}
