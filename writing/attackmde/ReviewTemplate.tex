@@ -393,7 +393,8 @@ affine transform matrix
 $\mathbf{A}_\theta$,
 next we address altering the appearance of the patch.
 
-When we alter the appearance of the patch, we followed 
+When we alter the appearance of the patch, 
+for better visualization quality, we followed 
 the principle of perspective drawing: 
 the vanishing point is where all parallel lines 
 intersect and is always on the horizon line.
@@ -402,14 +403,13 @@ illustrate this principle.
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{imgs/perspective.pdf}	
-	\caption{Diagram of \textit{single point perspective} drawing:
+	\caption{Diagram of single point perspective drawing:
 	All the vanishing lines lead to the vanishing point.
 	The horizontal and vertical lines, however, 
 	remain parallel to each other.}
 	\label[]{perspective}
 \end{figure}
-For better visualization quality,
-in this phase, we utilize vanishing point.
+
 We first detect straight lines in the attacked 
 scene with \textit{Hough} transform, then we obtain 
 the vanishing point by extending this lines 
@@ -429,44 +429,60 @@ transforms in this phase are implemented with
 The aim of this research is to attack MDE models inconspicuously 
 with patches, we consider three factors: attack effect, 
 which area of the adversarial example is more inconspicuous 
-and how to make the patches more 
+and what appearance of the patches are more 
 inconspicuous.
-Based on these three factors, we design three optimization terms in
-our objective formulation, which are summed up in a linear manner:
+The last consideration about the appearance is addressed
+by perspective geometry, while the attack effect and 
+inconspicuous areas are optimized by two loss funtions
+respectively.
+The two loss functions consisit 
+our objective function in a linear manner:
 \begin{equation}
 \begin{aligned}
 	&\mathcal{L}_{total} = \lambda_1\mathcal{L}_{attack} +
-	\lambda_2\mathcal{L}_{perspective} +
-	\lambda_3\mathcal{L}_{blank}\\ 
-	&\sum_{i}{\lambda_i} = 1
+	\lambda_2\mathcal{L}_{blank}\\ 
 \end{aligned}
 \end{equation}
+We are going to explain the two loss functions in the following
+part of this section.
 
-\paragraph{attack effect}
+\subsubsection{attack effect}
 MDE $f_{mde}$ systems generate depth maps, whose pixel values 
 represent the distance from area to sample sensors.
-To obtain best attack effect means, that is, 
+To obtain best attack effect, that is, 
 to maximize the error between prediction maps and annotated maps:
 \begin{align}
-\mathcal{L}_{attack} = \Vert y - y^{*} \Vert_{p}
+\mathcal{L}_{attack} = \Vert f_{mde}(I^{'}) - D^{*} \Vert_{p}
 \end{align}
-We use $L_1, L_2$ and Huber loss in our subsequent experiments.
+We use $L_1, L_2$ and Huber loss in our experiments.
 
-\paragraph{Visualization Quality}
+\subsubsection{Visualization Quality}
 For better inconspicuousness, we camouflage the patch 
-as graffiti, which can be easily found on white and 
-blank walls. We design Blank loss to help the patch to find
-blank position in the area:
+as graffiti, which can be usually found on 
+blank walls. Blank means with no pictures, marks or 
+decoration on white walls.
+Based on this we design Blank loss to help the patch to 
+find blank areas, the Blank loss
+consisits of two optimazation sub-terms:
 	\begin{align}
 		\label[]{blank}
-	\mathcal{L}_{blank} =\sqrt{\partial_x^2 (m \odot I) + \partial_y^2 (m \odot I) }
+		\mathcal{L}_{blank} = \mathcal{L}_{smooth}+\mathcal{L}_{white}
  	\end{align}
-Besides, we designed white loss to make the 'graffiti' more 
-likely to be sticked 
-in the white area:
-\begin{align}
-	\mathcal{L}_{white} = \min (1-\sum m \odot I, 0)
-\end{align}
+$\mathcal{L}_{smooth}$ constrain the patch locate
+on areas with low texture complexity:
+	\begin{align}
+		\label[]{smooth}
+		\mathcal{L}_{smooth} = 
+		-\sqrt{\partial_x^2 (m \odot I) + \partial_y^2 (m \odot I)}
+ 	\end{align}
+where $ $ denotes.
+$\mathcal{L}_{white}$ constrain the patch locate
+ on white areas:
+	\begin{align}
+		\label[]{white}
+		\mathcal{L}_{white} = \min (1-\sum m \odot I, 0)
+ 	\end{align}
+where $ $ denotes.
 
 \section{Experiments}
 In this section, we conduct several experiments to exhibit 
