@@ -16,6 +16,7 @@
 \usepackage{pifont}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{url}
 
 
 % It is strongly recommended to use hyperref, especially for the review version.
@@ -165,7 +166,7 @@ As a result of this, final fine depth maps are densely
 restored from small to big.
 Current MDE networks are bulky and inefficient, which can not
 be equipped on embedding systems. Wofk et al.~\cite{Wofk_2019_ICRA} 
-proposed Fashdepth,
+proposed Fastdepth,
 a light, fast MDE network.
 Some researches~\cite{Li_2018_ACCV,cao_2017_CSVT,Fu_2018_CVPR} 
 address this problem by formulizing it as 
@@ -375,13 +376,7 @@ This location searching process can be represented as:
 				1	
 				\end{pmatrix} 
 \end{align}
-As indicated in Eq.\ref{new coordinate},
-the coordinates of the target pixels $G'_i$ are continuous values. 
-We adopt bilinear interpolation to determine the value of 
-the target pixel. 
-Bilinear interpolation mechanism is proved 
-to be differentiable in 
-\textit{spatial transformer networks}~\cite{stn}.
+
 
 %$[m,n] \in [-1,1]$ denote the perspective parameters.
 %Given a monocular image $I \in \mathbb{R}^{H\times W\times 3}$,
@@ -392,6 +387,8 @@ The location problem is settled by optimizing an
 affine transform matrix
 $\mathbf{A}_\theta$,
 next we address altering the appearance of the patch.
+The appearance altering phase can be seen in 
+Fig~\ref{stream}(b).
 
 When we alter the appearance of the patch, 
 for better visualization quality, we followed 
@@ -415,11 +412,22 @@ scene with \textit{Hough} transform, then we obtain
 the vanishing point by extending this lines 
 and computing their intersection.
 Based on the principle of perspective drawing, as illustrated
-in Fig~\ref{stream}, if we connect the left-top point and 
+in Fig~\ref{stream}(b), if we connect the left-top point and 
 vanishing point, the right-top point should lay on this 
 line. Same on the bottom line.
-Actually, the connection lines, which converge to vanishing
-points, will look shorter than it completely 
+Meanwhile, the connection lines, which converge to vanishing
+points, will look shorter than their original length. 
+We explain this fact in Fig~\ref{stream}(b):
+when seen from the front
+view, the width of patches $w$ will shrink to $w'$.
+\begin{align}
+	w' = \sqrt{w^2-d^2}
+\end{align}
+Since this task we concentrate on is just MDE, we possess
+the depth of each pixel. 
+The patches' depth $d$ can be
+got by subtracting fronter boarder depth from 
+back boarder depth. We set $w=0.1m$ in our experiments.
 We get four corrected corner coordinates, with which we 
 alter the appearance of the patch. The perspective
 transforms in this phase are implemented with 
@@ -475,30 +483,75 @@ on areas with low texture complexity:
 	\begin{align}
 		\label[]{smooth}
 		\mathcal{L}_{smooth} = 
-		-\sqrt{\partial_x^2 (m \odot I) + \partial_y^2 (m \odot I)}
+		-\frac{\sqrt{\partial_x (M \odot I) + \partial_y (M \odot I)}}{N} 
  	\end{align}
-where $ $ denotes.
+where $M$ denotes a full 1 mask that has the 
+same size as $\delta$. $\partial_x$ and $\partial_y$
+denote the gradient in $x$ and $y$ directions respectively.
+$N$ is the number of pixels in $M$.
 $\mathcal{L}_{white}$ constrain the patch locate
  on white areas:
 	\begin{align}
 		\label[]{white}
-		\mathcal{L}_{white} = \min (1-\sum m \odot I, 0)
+		\mathcal{L}_{white} = \frac{\sum_{1}^{N} M \odot I}{N} 
  	\end{align}
-where $ $ denotes.
+
+\subsection{location Optimization}
+As indicated in Eq.\ref{new coordinate},
+the coordinates of the target pixels $G'_i$ are continuous values. 
+We adopt bilinear interpolation to determine the value of 
+the target pixel. 
+Bilinear interpolation mechanism is proved 
+to be differentiable in 
+\textit{spatial transformer networks}~\cite{stn}.
+By maximize the $\mathcal{L}_{attack}$, 
+we can optimize the offsets step by step.
+\begin{align}
+	I_0^{adv} = I, X_{N+1}^{adv} = Clip_{I,\epsilon} 
+	\{I_{N}^{adv} + \alpha {\bigtriangledown_{I}J(\theta, x, y)}\}. 
+\end{align}
+The stream of location searching phase can be seen in 
+Fig~\ref{stream}(a).
 
 \section{Experiments}
 In this section, we conduct several experiments to exhibit 
 the results of our automatic and inconspicuous attack
 method on the fastdepth~\cite{Wofk_2019_ICRA} MDE system. 
-As mentioned before, we consider three factors: attack effect, 
-which area of the adversarial example is more inconspicuous 
-and how to make the patches more 
-inconspicuous. We first show our attack effect in 
-Sec~\ref{Visualization Attack Results} and 
+%As mentioned before, we consider three factors: attack effect, 
+%which area of the adversarial example is more inconspicuous 
+%and how to make the patches more 
+%inconspicuous. 
+We introduce our implemention detail, including datasets
+and hyper parameters in
+Sec~\ref{Implemention Detail}.
+In Sec~\ref{Visualization Attack Results} and 
 Sec~\ref{Quantitative Attack Results}, 
-then we demonstrate the automatic searching process driven 
+our attack effects are shown by visualization
+and quantitative comparison.
+Then we demonstrate the automatic searching process driven 
 by our method in Sec~\ref{Automatic Searching}. Finally we
 show and analyze the visual quality of our adversarial examples. 
+
+\subsection{Implemention Detail}
+\label[]{Implemention Detail}
+For the MDE system, we use Fastdepth~\cite{Wofk_2019_ICRA}. 
+We also use the same dataset NYU Depth v2
+~\cite{Silberman_2012_ECCV} used in
+the Fastdepth~\cite{Wofk_2019_ICRA}. 
+There are 1449 densely annotated depth and RGB images pairs,
+795 of which are split to train dataset and the rest are
+split to test dataset.
+For the image preprocessing, we followed the process in
+Fastdepth: images are resize to $250 \times 333$ firstly, 
+secondly, center cropped to $224 \times 304$, in the end 
+they are resize to $224 \times 224$.
+
+For the patch dataset, we choose QuickDraw~\cite{quickdraw}.
+QuickDraw is a collection of 50 
+million hand-writing drawings across 345 categories.
+We select several categories, including bee, ant,
+dolphin, crocodile and so on. The size of them are
+all $28 \times 28$.
 
 \subsection{Visualization Attack Results} 
 \label[]{Visualization Attack Results}

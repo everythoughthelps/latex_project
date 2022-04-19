@@ -19,5 +19,9 @@
 \backcite {Kong_2020_CVPR}{{2}{2.2}{subsection.2.2}}
 \backcite {Hu_2021_ICCV}{{2}{2.2}{subsection.2.2}}
 \backcite {Zolfi_2021_CVPR}{{2}{2.2}{subsection.2.2}}
-\backcite {stn}{{3}{3.2}{equation.3.5}}
+\backcite {stn}{{4}{3.4}{subsection.3.4}}
 \backcite {Wofk_2019_ICRA}{{4}{4}{section.4}}
+\backcite {Wofk_2019_ICRA}{{5}{4.1}{subsection.4.1}}
+\backcite {Silberman_2012_ECCV}{{5}{4.1}{subsection.4.1}}
+\backcite {Wofk_2019_ICRA}{{5}{4.1}{subsection.4.1}}
+\backcite {quickdraw}{{5}{4.1}{subsection.4.1}}
