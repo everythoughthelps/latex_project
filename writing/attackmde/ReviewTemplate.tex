@@ -396,7 +396,7 @@ the principle of perspective drawing:
 the vanishing point is where all parallel lines 
 intersect and is always on the horizon line.
 Fig~\ref{perspective} clearly 
-illustrate this principle.
+illustrates this principle.
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{imgs/perspective.pdf}	
@@ -507,11 +507,12 @@ to be differentiable in
 By maximize the $\mathcal{L}_{attack}$, 
 we can optimize the offsets step by step.
 \begin{align}
-	I_0^{adv} = I, X_{N+1}^{adv} = Clip_{I,\epsilon} 
+	I_0^{adv} = I, I_{N+1}^{adv} = Clip_{I,\epsilon} 
 	\{I_{N}^{adv} + \alpha {\bigtriangledown_{I}J(\theta, x, y)}\}. 
 \end{align}
 The stream of location searching phase can be seen in 
-Fig~\ref{stream}(a).
+Fig~\ref{stream}(a). In our experiments we set 
+$\alpha = 0.002$, step... 
 
 \section{Experiments}
 \begin{figure*}[htb]
@@ -521,6 +522,8 @@ Fig~\ref{stream}(a).
 	The second and fourth rows are the visualization
 	of prediction error: 
 	$f_{mde}(I^{adv}) - D^{*}$.
+	The color bar down the results explicates the 
+	error value intuitively.
 	We emphasize the patches using surrounding 
 	black boxes, which are transformed in the 
 	altering appearance phase also.}
@@ -533,8 +536,8 @@ method on the fastdepth~\cite{Wofk_2019_ICRA} MDE system.
 %which area of the adversarial example is more inconspicuous 
 %and how to make the patches more 
 %inconspicuous. 
-We introduce our implemention detail, including datasets
-and hyper parameters in
+We introduce our implemention detail, including datasets,
+data pre-processing and experiment environment in
 Sec~\ref{Implemention Detail}.
 In Sec~\ref{Visualization Attack Results} and 
 Sec~\ref{Quantitative Attack Results}, 
@@ -550,13 +553,15 @@ For the MDE system, we use Fastdepth~\cite{Wofk_2019_ICRA}.
 We also use the same dataset NYU Depth v2
 ~\cite{Silberman_2012_ECCV} used in
 the Fastdepth~\cite{Wofk_2019_ICRA}. 
-There are 1449 densely annotated depth and RGB images pairs,
+This dataset is an indoor dataset, whose depth range is 
+0-10 m.
+It consisits of 1449 densely annotated depth and RGB images pairs,
 795 of which are split to train dataset and the rest are
 split to test dataset.
-For the image preprocessing, we followed the process in
+For the image pre-processing, we followed the process in
 Fastdepth: images are resize to $250 \times 333$ firstly, 
 secondly, center cropped to $224 \times 304$, in the end 
-they are resize to $224 \times 224$.
+they are resized to $224 \times 224$.
 
 For the patch dataset, we choose QuickDraw~\cite{quickdraw}.
 QuickDraw is a collection of 50 
@@ -567,10 +572,48 @@ all $28 \times 28$.
 
 \subsection{Visualization Attack Results} 
 \label[]{Visualization Attack Results}
-As mentioned above
+As mentioned above, our method generate 
+inconspicuous and destructive $I^{adv}$.
+The results are shown in Fig~\ref{results}
+from the two aspects. 
+
+For inconspicuousness, we show the adversarial examples
+in the first and third rows. The black box shows that
+our adversarial examples follow the principle 
+of perspective drawing. Besides the patches lay on 
+walls and furniture, which makes our examples look like 
+graffiti and more harmonious in indoor scenes.
+
+For destructiveness, we show the 
+prediction error in the sencond and fourth row.
+Our method achieves $320mm$ max error. Prediction results
+from $I^{adv}$ are usually nearer than ground truth 
+depth maps in far-range areas, for instance, 
+the blue areas in Fig~\ref{results}.
+However, the results are farther in near-range areas,
+which means our adversarial examples mislead the MDE 
+system and make the prediction results converge to 
+middle distances.
 
 \subsection{Quantitative Attack Results} 
 \label[]{Quantitative Attack Results}
+\begin{table*}
+    \centering  % 显示位置为中间
+    \caption{Accuracy of different attack method and original method}  % 表格标题
+    \label{table1}  % 用于索引表格的标签
+    %字母的个数对应列数，|代表分割线
+    % l代表左对齐，c代表居中，r代表右对齐
+    \begin{tabular}{c|c|c|c|c}  
+      \hline  % 表格的横线
+      &RMSE&MAE&absrel&delta1 \\  % 表格中的内容，用&分开，\\表示下一行
+      \hline
+      %& & & \\[-6pt]  %可以避免文字偏上 
+      fastdepth&0.600&0.427&0.162&0.771 \\
+      random patch attack&0.674&0.564&0.177&0.743 \\
+      ours patch attack&0.608&0.431&0.165&0.769 \\
+      \hline
+    \end{tabular}
+  \end{table*}
 
 \subsection{Automatic Searching} 
 \label[]{Automatic Searching}
