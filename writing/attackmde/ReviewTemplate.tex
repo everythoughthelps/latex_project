@@ -320,7 +320,7 @@ $\Vert \centerdot \Vert_p$ denotes the $l_p$ norm.
 %In this section, we will introduce our fast and light optimal 
 %method in detail, which searches the most destructive area and 
 %transforms the patches to a more rational style before sticking.
-To obtain an adversarial example $I^{'}$,
+To obtain an adversarial example $I^{adv}$,
 the first problem we encountered is where to stick the patches.
 Exhaustive search is feasible but time consuming. We expect to
 complete this this process automatically and quickly.
@@ -339,16 +339,15 @@ location automatically.
 		\end{array}
 		\right]      
 \end{align}
-where $[O_x,O_y]^\top$ denote the offsets in 
+where $[t_x,t_y]^\top$ denote the offsets $O$ in 
 horizontal and vertical directions, respectively. 
 Initial values are $[0,0]$, which represent
 that the center of the patch is on the center of the image.
-To avoid overflow from RGB images, $[t_x,t_y]^\top$ are
-clamped between $(-0.875,0.875)$.
+
 
 Specifically, we first place the patch $\delta$
 in the center of the 
-clean image $I$
+clean image $I$,
 then pad 0 around it to the size of $I$.
 The homogeneous coordinate of this 
 patch is noted as $G$ and its size is $H\times W\times 3$.
@@ -471,7 +470,7 @@ blank walls. Blank means with no pictures, marks or
 decoration on white walls.
 Based on this we design Blank loss to help the patch to 
 find blank areas, the Blank loss
-consisits of two optimazation sub-terms:
+consisits of two optimization sub-terms:
 	\begin{align}
 		\label[]{blank}
 		\mathcal{L}_{blank} = \mathcal{L}_{smooth}+\mathcal{L}_{white}
@@ -502,15 +501,15 @@ the target pixel.
 Bilinear interpolation mechanism is proved 
 to be differentiable in 
 \textit{spatial transformer networks}~\cite{stn}.
-By maximize the $\mathcal{L}_{attack}$, 
-we can optimize the offsets step by step.
+By maximizing the $\mathcal{L}_{attack}$, 
+we can optimize the offsets $O$ step by step.
 \begin{align}
-	I_0^{adv} = I, I_{N+1}^{adv} = Clip_{I,\epsilon} 
-	\{I_{N}^{adv} + \alpha {\bigtriangledown_{I}J(\theta, x, y)}\}. 
+	O_{S+1} = Clip 
+	\{O_{S} + \alpha 
+	{\bigtriangledown_{O}\mathcal{L}_{total}}\}. 
 \end{align}
 The stream of location searching phase can be seen in 
-Fig~\ref{stream}(a). In our experiments we set 
-$\alpha = 0.002$, step... 
+Fig~\ref{stream}(a). 
 
 \section{Experiments}
 \begin{figure*}[htb]
@@ -568,6 +567,13 @@ We select several categories, including bee, ant,
 dolphin, crocodile and so on. The size of them are
 all $28 \times 28$.
 
+In our experiments we set 
+$\alpha = 0.002$, total optimization step is 300 steps.
+To avoid overflow from RGB images, $O$ are
+clipped between $(-0.875,0.875)$.
+Our experiments are performed on an 
+NVIDIA GeForce RTX 2080 TI GPU.
+%®
 \subsection{Visualization Attack Results} 
 \label[]{Visualization Attack Results}
 As mentioned above, our method generate 
@@ -601,15 +607,17 @@ middle distances.
     \label{table1}  % 用于索引表格的标签
     %字母的个数对应列数，|代表分割线
     % l代表左对齐，c代表居中，r代表右对齐
-    \begin{tabular}{c|c|c|c|c}  
-      \hline  % 表格的横线
-      &RMSE&MAE&absrel&delta1 \\  % 表格中的内容，用&分开，\\表示下一行
-      \hline
+    \begin{tabular}{c|c|c|c|c|c|c}  
+		\toprule
+      \multicolumn{2}{c|}{}&RMSE&MAE&absrel&delta1&Runtime \\  % 表格中的内容，用&分开，\\表示下一行
+      \midrule
       %& & & \\[-6pt]  %可以避免文字偏上 
-      fastdepth&0.600&0.427&0.162&0.771 \\
-      random patch attack&0.674&0.564&0.177&0.743 \\
-      ours patch attack&0.608&0.431&0.165&0.769 \\
-      \hline
+      \multicolumn{2}{c|}{fastdepth}&0.600&0.427&0.162&0.771& \\
+      \hline  % 表格的横线
+      \multirow{3}{*}{Ours}&l1&0.608&0.431&0.165&0.769& \\
+      					&l2&0.608&0.431&0.165&0.769& \\
+      					&Huber&0.608&0.431&0.165&0.769& \\
+		\bottomrule
     \end{tabular}
   \end{table*}
 
