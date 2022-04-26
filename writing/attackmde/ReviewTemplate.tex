@@ -18,6 +18,7 @@
 \usepackage{multirow}
 \usepackage{url}
 
+\newcommand{\aca}[1]{{\color{red}#1}}
 
 % It is strongly recommended to use hyperref, especially for the review version.
 % hyperref with option pagebackref eases the reviewers' job.
@@ -65,11 +66,14 @@
 % First line of institution2 address\\
 % {\tt\small secondauthor@i2.org}
 % }
-\author{xxx
-\\ School of Computer Science and Engineering, 
-Sun Yat-sen University, China\\{\tt\small \{panm9\}@mail2.sysu.edu.cn}}
-
+\author{Meng Pan, Haomin Yu, Fangjun Huang$^\dagger$\\
+ School of Computer Science and Engineering, 
+Sun Yat-sen University, China\\
+{\tt\small panm9@mail2.sysu.edu.cn, huangfj@mail.sysu.edu.cn
+}}
 \maketitle
+\def\thefootnote{$\dagger$}\footnotetext{
+	Corresponding author}\def\thefootnote{\arabic{footnote}}
 
 %%%%%%%%% ABSTRACT
 \begin{abstract}
@@ -137,7 +141,17 @@ which can generate reasonable patches according to depth map
 automatically. The generation processes are driven by three 
 learnable coefficients and don't need any extra generation networks.
 
-contribution.
+The contribution of this work are as follow:
+\begin{itemize}
+	\item We proposed a automatic, inconspicuous and
+	implementable patch attack method and we 
+	attack a MDE system by the method. 
+	 
+	\item We evaluate our patch attack method on
+	NYU depth v2, experiments
+	show that our method generate destructive while 
+    concealed adversarial examples.
+\end{itemize}.
 
 The structure in the rest of this paper is conducted as:
 
@@ -180,7 +194,6 @@ Lee~\cite{Lee_2019_CVPR} proposed a method to predict depth from relative depth.
 They first estimate relative depth by utilizing rank-1 property, 
 then the final depth maps are reconstructed through these relative 
 depth maps.
-
 
 \begin{figure*}[htb]
 	\centering
@@ -459,7 +472,7 @@ represent the distance from area to sample sensors.
 To obtain best attack effect, that is, 
 to maximize the error between prediction maps and annotated maps:
 \begin{align}
-\mathcal{L}_{attack} = \Vert f_{mde}(I^{'}) - D^{*} \Vert_{p}
+\mathcal{L}_{attack} = \Vert f_{mde}(I^{adv}) - D^{*} \Vert_{p}
 \end{align}
 We use $L_1, L_2$ and Huber loss in our experiments.
 
@@ -507,6 +520,7 @@ we can optimize the offsets $O$ step by step.
 	O_{S+1} = Clip 
 	\{O_{S} + \alpha 
 	{\bigtriangledown_{O}\mathcal{L}_{total}}\}. 
+	\label[]{optimization}
 \end{align}
 The stream of location searching phase can be seen in 
 Fig~\ref{stream}(a). 
@@ -567,13 +581,21 @@ We select several categories, including bee, ant,
 dolphin, crocodile and so on. The size of them are
 all $28 \times 28$.
 
-In our experiments we set 
-$\alpha = 0.002$, total optimization step is 300 steps.
+For all experiments we set 
+$\alpha = 0.004$ in Eq~\ref{optimization}, 
+total optimization step is 50 steps.
 To avoid overflow from RGB images, $O$ are
 clipped between $(-0.875,0.875)$.
 Our experiments are performed on an 
 NVIDIA GeForce RTX 2080 TI GPU.
 %®
+We focus on six metrics to evaluate 
+the attack effect: RMSE, MAE, Absrel and
+$\max(\frac{d_i}{d_i^*},\frac{d_i^*}{d_i})=\delta < thr$,
+$thr$ denotes three threshold $1.25$, $1.25^2$, $1.25^3$. 
+Besides the accuracy, we also record our runtime, which
+can show the efficiency of our attack method.
+
 \subsection{Visualization Attack Results} 
 \label[]{Visualization Attack Results}
 As mentioned above, our method generate 
@@ -603,8 +625,8 @@ middle distances.
 \label[]{Quantitative Attack Results}
 \begin{table*}
     \centering  % 显示位置为中间
-    \caption{Accuracy of different attack method and original method}  % 表格标题
-    \label{table1}  % 用于索引表格的标签
+    \caption{Accuracy of our method, best results are boldfaced}  % 表格标题
+    \label{comparison table}  % 用于索引表格的标签
     %字母的个数对应列数，|代表分割线
     % l代表左对齐，c代表居中，r代表右对齐
     \begin{tabular}{c|c|c|c|c|c|c|c|c}  
@@ -617,11 +639,17 @@ middle distances.
       \multicolumn{2}{c|}{fastdepth (baseline)}&0.600&0.427&0.162&0.771&0.927&0.988&- \\
       \hline  % 表格的横线
       \multirow{3}{*}{Ours}&$L_1$&0.643&0.464&0.175&0.738&0.920&0.973&0.772  \\
-      					&$L_2$&0.641&0.461&0.177&0.739&0.921&0.973&0.781  \\
-      					&Huber&0.648&0.466&0.176&0.737&0.919&0.972&0.772  \\
+      					&$L_2$&0.641&0.461&\textbf{0.177}&0.739&0.921&0.973&0.781  \\
+      	&Huber&\textbf{0.648}&\textbf{0.466}&0.176&\textbf{0.737}&\textbf{0.919}&\textbf{0.972}&0.772  \\
 		\bottomrule
     \end{tabular}
   \end{table*}
+We show our attack effect by quantitative comparison in 
+Table~\ref{comparison table}. To the best our knowldege,
+we are the first to attack MDE systems using patches.
+There does not exist much related works.
+So we compare the baseline MDE method, fastdepth between
+our method with different $\mathcal{L}_{attack}$.
 
 \subsection{Automatic Searching} 
 \label[]{Automatic Searching}
@@ -688,9 +716,6 @@ The similarity is more significant along with the smaller size.
 		
 	\label[]{patches_on_one_scene}
 \end{figure*}
-
-\subsection{Visual Quality} 
-\label[]{Visual Quantity}
 
 \section{Conclusion}
 
