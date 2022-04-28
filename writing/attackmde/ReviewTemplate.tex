@@ -486,6 +486,17 @@ alter the appearance of the patch. The perspective
 transforms in this phase are implemented with 
 \textit{OpenCV}. 
 
+\begin{figure*}[htb]
+	\includegraphics[width=1\textwidth]{imgs/patch_on_scenes.pdf}
+	\caption{The final attack locations searched by our method (left) 
+	and corresponding MAE maps (right). 
+	The offsets of the maps are clamped between -0.875 and 0.875, 
+	as a contrast,
+	the width and height of the RGB images extend from -1 to 1,
+	which makes the maps a little smaller than the RGB images.
+	}
+	\label[]{patch_on_scenes}
+\end{figure*}
 \subsection{Objective Function}
 \label[]{Objective Function}
 The aim of this research is to attack MDE models inconspicuously 
@@ -501,8 +512,8 @@ The two loss functions consisit
 our objective function in a linear manner:
 \begin{equation}
 \begin{aligned}
-	&\mathcal{L}_{total} = \lambda_1\mathcal{L}_{attack} +
-	\lambda_2\mathcal{L}_{blank}\\ 
+	&\mathcal{L}_{total} = \mathcal{L}_{attack} +
+	\mathcal{L}_{blank}\\ 
 \end{aligned}
 \end{equation}
 We are going to explain the two loss functions in the following
@@ -568,20 +579,6 @@ The stream of location searching phase can be seen in
 Fig~\ref{stream}(a). 
 
 \section{Experiments}
-\begin{figure*}[htb]
-	\includegraphics[width=1\textwidth]{imgs/results.pdf}
-	\caption{The visualization of our patch attack
-	method. The first and third rows are $I^{adv}$.
-	The second and fourth rows are the visualization
-	of prediction error: 
-	$f_{mde}(I^{adv}) - D^{*}$.
-	The color bar down the results explicates the 
-	error value intuitively.
-	We emphasize the patches using surrounding 
-	black boxes, which are transformed in the 
-	altering appearance phase also.}
-	\label{results}
-\end{figure*}
 In this section, we conduct several experiments to exhibit 
 the results of our automatic and inconspicuous attack
 method on the fastdepth~\cite{Wofk_2019_ICRA} MDE system. 
@@ -638,6 +635,39 @@ $thr$ denotes three threshold $1.25$, $1.25^2$, $1.25^3$.
 Besides the accuracy, we also record our runtime, which
 can show the efficiency of our attack method.
 
+\begin{figure*}[htb]
+	\includegraphics[width=1\textwidth]{imgs/results.pdf}
+	\caption{The visualization of our patch attack
+	method. The first and third rows are $I^{adv}$.
+	The second and fourth rows are the visualization
+	of prediction error: 
+	$f_{mde}(I^{adv}) - D^{*}$.
+	The color bar down the results explicates the 
+	error value intuitively.
+	We emphasize the patches using surrounding 
+	black boxes, which are transformed in the 
+	altering appearance phase also.}
+	\label{results}
+\end{figure*}
+\subsection{Automatic Searching} 
+\label[]{Automatic Searching}
+
+In this section you are going to find that given an image 
+our attack method can search the sensitive zone and stick
+the patch on the zone. To better demonstrate our search effect, 
+we calculate the MAE 
+maps of test images. Beginning from the left top corner, 
+where is (-0.875,-0.875), we use strides 7 to move the patch 
+step by step and calculate 
+the MAE of each position, finally getting the MAE maps.
+The red and violet colors in the maps represent higher and lower 
+MAE values, respectively.
+As you can see from Fig~\ref{patch_on_scenes}, 
+our method can accurately search the sensitive area of the image.
+Note that to emphasize our search effect, we didn't use the 
+Blank (eq~\ref{blank})
+loss function in this experiment. 
+
 \subsection{Visualization Attack Results} 
 \label[]{Visualization Attack Results}
 As mentioned above, our method generate 
@@ -665,6 +695,7 @@ middle distances.
 
 \subsection{Quantitative Attack Results} 
 \label[]{Quantitative Attack Results}
+
 \begin{table*}
     \centering  % 显示位置为中间
     \caption{Accuracy of our method, best results are boldfaced}  % 表格标题
@@ -673,16 +704,16 @@ middle distances.
     % l代表左对齐，c代表居中，r代表右对齐
     \begin{tabular}{c|c|c|c|c|c|c|c|c}  
 		\toprule
-      \multicolumn{2}{c|}{}&RMSE$\downarrow$ &MAE$\downarrow$
-	  &Absrel$\downarrow$ &$\delta_1\uparrow$ 
-	  &$\delta_2\uparrow$&$\delta_3\uparrow$&Runtime \\  % 表格中的内容，用&分开，\\表示下一行
+      \multicolumn{2}{c|}{}&RMSE &MAE
+	  &Absrel &$\delta_1$ 
+	  &$\delta_2$&$\delta_3$&Runtime \\  % 表格中的内容，用&分开，\\表示下一行
       \midrule
       %& & & \\[-6pt]  %可以避免文字偏上 
       \multicolumn{2}{c|}{fastdepth (baseline)}&0.600&0.427&0.162&0.771&0.927&0.988&- \\
       \hline  % 表格的横线
       \multirow{3}{*}{Ours}&$L_1$&0.643&0.464&0.175&0.738&0.920&0.973&0.772  \\
-      					&$L_2$&0.641&0.461&\textbf{0.177}&0.739&0.921&0.973&0.781  \\
-      	&Huber&\textbf{0.648}&\textbf{0.466}&0.176&\textbf{0.737}&\textbf{0.919}&\textbf{0.972}&0.772  \\
+      					&$L_2$&0.641&0.461&\textbf{0.177/9.3\%}&0.739&0.921&0.973&0.781  \\
+      	&Huber&\textbf{0.648/6\%}&\textbf{0.466/9.1\%}&0.176&\textbf{0.737}&\textbf{0.919}&\textbf{0.972}&0.772  \\
 		\bottomrule
     \end{tabular}
   \end{table*}
@@ -692,36 +723,17 @@ we are the first to attack MDE systems using patches.
 There does not exist much related works.
 So we compare the baseline MDE method, fastdepth between
 our method with different $\mathcal{L}_{attack}$.
+We degrade the MAE by 9.13\%, as a contrast, 
+Wong~\cite{Wong_2020_NIPS} achieve 10\% accuracy loss
+(closer or farther)
+on each pixel of the depth.
+However, they rely on the guidance of the modified ground
+truth depth maps, in other words, they modify the ground
+truth depth value down or up 10\% in each pixel, 
+and use the modified
+maps as supervision. Besides, they use elaborately designed
+perturbations to generate adversarial examples.
 
-\subsection{Automatic Searching} 
-\label[]{Automatic Searching}
-\begin{figure*}[htb]
-	\includegraphics[width=1\textwidth]{imgs/patch_on_scenes.pdf}
-	\caption{The final attack locations searched by our method (left) 
-	and corresponding MAE maps (right). 
-	The offsets of the maps are clamped between -0.875 and 0.875, 
-	as a contrast,
-	the width and height of the RGB images extend from -1 to 1,
-	which makes the maps a little smaller than the RGB images.
-	}
-	\label[]{patch_on_scenes}
-\end{figure*}
-
-In this section you are going to find that given an image 
-our attack method can search the sensitive zone and stick
-the patch on the zone. To better demonstrate our search effect, 
-we calculate the MAE 
-maps of test images. Beginning from the left top corner, 
-where is (-0.875,-0.875), we use strides 7 to move the patch 
-step by step and calculate 
-the MAE of each position, finally getting the MAE maps.
-The red and violet colors in the maps represent higher and lower 
-MAE values, respectively.
-As you can see from Fig~\ref{patch_on_scenes}, 
-our method can accurately search the sensitive area of the image.
-Note that to emphasize our search effect, we didn't use the 
-Blank (eq~\ref{blank})
-loss function in this experiment. 
 %We visualize the serach path in Fig~\ref{search_path}.
 %\begin{figure*}
 %	\includegraphics[width=1\linewidth]{imgs/search_path.pdf}
@@ -760,7 +772,21 @@ loss function in this experiment.
 %\end{figure*}
 
 \section{Conclusion}
-
+We attacked an MDE system using our fast, 
+physical-realizable, automatic and inconspicuous 
+patch attack method. Fast because it doesn't lean 
+on any generative networks. Physical-realizable 
+because the effect can be simulated by sticking a 
+real patch on the sensitive spot. Automatic 
+because it is optimized by gradient descent. 
+Inconspicuous because our method conceals the patch 
+as graffiti. Our experiments showed that the depth 
+maps predicted by the target MDE system lost some accuracy. 
+Our work revealed the probability that an accident 
+could happen due to drawing graffiti intentionally 
+or unintentionally. Future works 
+should pay more attention to multimodal fusion 
+or provide robust constraints for MDE networks.
 
 %%%%%%%%% REFERENCES
 {\small
