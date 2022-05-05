@@ -216,7 +216,8 @@ A network was proposed subsequently by them~\cite{Eigen_2015_ICCV},
 in which three 
 different tasks, depth estimation, segmentation and 
 normals prediction was integrated into one model.
-Lee~\cite{lee_2019_arxiv} coined novel local planar guidance layers and locate 
+Lee~\cite{lee_2019_arxiv} coined novel local planar 
+guidance layers and locate 
 them at different scale decoding phases. 
 As a result of this, final fine depth maps are densely 
 restored from small to big.
@@ -253,7 +254,8 @@ Godard et al.~\cite{Godard_2017_CVPR} exploit the left-right
 consistency of binocular image pairs
 to tackle this issue: 
 with a decently predicted disparity, 
-the two images sampled from a binocular camera can synthesize each other. 
+the two images sampled from a binocular camera can 
+synthesize each other. 
 A consecutive vedio sequence can provide a constrain for MDE.
 Given a middle frame and its former, later frame sampled from a video, 
 DNNs can estimate the camera pose and the depth, with which we can 
@@ -261,10 +263,12 @@ restore the other two frames. Based on this constrain, camera pose
 and depth can be learned jointly~\cite{Zhou_2017_CVPR}.
 However, there is a flaw in both video and binocular solutions.
 On the one hand, binocular image pairs methods struggle in occlusion 
-and texture-copy problems, yet, on the other hand, as an alternative method, 
+and texture-copy problems, yet, on the other hand, as an 
+alternative method, 
 predicting depth from a video performs unsatisfactorily 
 when it comes to relatively stationary objects.
-To address this, Godard et al.~\cite{Godard_2019_ICCV} proposed a multi-scale reconstruction
+To address this, Godard et al.~\cite{Godard_2019_ICCV} 
+proposed a multi-scale reconstruction
 loss and a automasking approach to ignore relatively stationary objects.
 \subsection{Patch Attack}
 Adding perturbations to images has a limit: 
@@ -292,7 +296,8 @@ using the $L_1$ regularization. Then they generate perturbations
 using $L_2$ regularization on vulnerable areas, finally reshape 
 the perturbations to a graffiti shape. In doing so, they achieve 
 a high successful rate under various environmental conditions.
-Liu et al.~\cite{Liu_2019_AAAI} also attacked the traffic signs. Instead of 
+Liu et al.~\cite{Liu_2019_AAAI} also attacked the traffic signs. 
+Instead of 
 locating the vulnerable areas by computing, they locate 
 the patch by a attention model, which takes as input the 
 traffic sign, outputs an mask that indicates where to put the patch. 
@@ -660,7 +665,8 @@ maps of test images. Beginning from the left top corner,
 where is (-0.875,-0.875), we use strides 7 to move the patch 
 step by step and calculate 
 the MAE of each position, finally getting the MAE maps.
-The red and violet colors in the maps represent higher and lower 
+The red and violet colors in the maps represent 
+higher and lower 
 MAE values, respectively.
 As you can see from Fig~\ref{patch_on_scenes}, 
 our method can accurately search the sensitive area of the image.
