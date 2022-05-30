@@ -105,30 +105,35 @@ Sun Yat-sen University, China\\
 \end{abstract}
 
 \section{Introduction}
-Monocular Depth Estimation~(MDE) 
-is a crucial 3D scene perception task. 
-Trapped by the lack of sufficient geometric constraints, 
-MDE is still an ill-posed problem. With the rapid development of 
-Deep Neural Networks(DNNs), MDE has emerged many excellent works 
-in recent years. However, according to Szegedy's 
+Monocular Depth Estimation~(MDE) algorithms aim to 
+predict depth value of each pixel given a monocular
+image. it is a crucial 3D scene perception method. 
+%Trapped by the lack of sufficient geometric constraints, 
+%MDE is still an ill-posed problem. 
+With the rapid development of 
+Deep Neural Networks(DNNs), many excellent MDE methods 
+have been proposed recently. 
+However, according to Szegedy's 
 research~\cite{Szegedy_2014_ICLR}, DNNs are 
 prone to be attacked by adversarial examples: 
 when an imperceptible 
 small perturbation is added to an input image, the classifier 
-based on DNNs will classify the image, knowned as
+based on DNNs will classify the obtained image, knowned as
 adversarial examples, into a wrong category with high probability. 
-This property has been verified not only on classification tasks 
+Adversarial examples have been found not only on classification tasks 
 but also on logical regression tasks, such as 
 semantic segmentation and 
 object recognition. MDE also failed to get rid of this dilemma.
-
 As a kind of 3D scene perception solution, MDE 
 algorithms need to be 
-robust and reliable, so that when an attack occurs in automatic 
-driving, the vehicle can still accurately perceive the depth 
-of the scene. Otherwise, the damage is much more serious than 
-the percentage loss in accuracy. On MDE, this problem was 
-first confirmed and researched by Wong~\cite{Wong_2020_NIPS}. 
+robust and reliable.
+Otherwise, immense damage can be caused.
+
+%so that when an attack occurs in automatic 
+%driving, the vehicle can still accurately perceive the depth 
+%of the scene. 
+The threat of adverserial example on MDE algorithms was 
+first studied by Wong~\textit{et al}~\cite{Wong_2020_NIPS}. 
 They conducted 
 comprehensive and rigorous experiments to explore the impact 
 of pixel attacks on MDE. Including attacking the whole 
@@ -150,47 +155,54 @@ enlightening for attacking MDE.
 	}
 	\label[]{effect}
 \end{figure}
-However, the study of Wong~\cite{Wong_2020_NIPS} can hardly apply 
-to physical 
-world, it didn't take physical attack into account. 
-The perturbations used in experiments are elaborately designed, 
-which are very hard to realize in the physical world
-and detect for a sensor. 
-While attacking scenes with patches is an appropriate solution: 
-sticking a patch into the target scene is much more 
-implementable and inconspicuous.
-There are some researches exploit patches to attack 
-DNNs~\cite{Brown_2017_arxiv}, 
-but most of them 
-didn't pay much attention on inconspicuousness. 
-Abrupt and unreal patch in scenes will reveal the attack 
-intention.
-Indeed, some works noticed this problem and utilize 
-GAN~\cite{Hu_2021_ICCV,Kong_2020_CVPR,Liu_2019_AAAI} to make patches
-more naturalistic. 
-This will increase time and space complexity obviously.
-In this study, we take physical realizability and 
-inconspicuousness into accout, design an fast 
-algorithm to attack MDE.
+However, \cite{Wong_2020_NIPS} is hard to be realized
+in the physical world, since
+the perturbations added on the input images can not 
+be perceived by a camera. 
+While attacking scenes with patches is an appropriate solution. 
+Camouflaging a patch to a sticker and sticking it 
+into the target scene is inconspicuous and easy
+to be implemented.
 
-Specifically, we organize a learnable matrix, 
-which can update the location of patches according 
-to attack effect and visual quality using gradient 
-descent automatically. 
-The optimal process is driven by three loss functions 
-and doesn't need any extra generation networks.
-Fig~\ref{effect} shows that our adversarial examples
+There exist some works exploiting patches to generate 
+adversarial examples on image classification,
+traffic sign recognition and other tasks.
+For example, Brown~\textit{et al}~\cite{Brown_2017_arxiv}
+exploited patches to attack 
+DNNs, but they didn’t 
+pay much attention on inconspicuousness, that is, 
+the abrupt and unreal patch in scenes will reveal 
+the attack intention.
+Later works~\cite{Hu_2021_ICCV,Kong_2020_CVPR,Liu_2019_AAAI}
+noticed this problem and utilize 
+GAN to make patches
+more naturalistic. 
+But this will increase time and space complexity obviously.
+
+In this paper, we take physical realizability and 
+inconspicuousness into accout, and design an fast automatic
+algorithm to attack MDE algorithms.
+Fig.~\ref{effect} shows that our adversarial examples
 on pixel level can be simulated with a patch 
 sticked on a real scene.
 
+Specifically, 
+
 The contributions of this work are as follows:
 \begin{itemize}
-	\item We proposed a automatic, inconspicuous and
-	implementable patch attack method and we 
-	attack a MDE system by the method. 
-	 
-	\item We evaluate our patch attack method on
-	NYU depth v2, experiments
+	\item We are the first to apply patch attack on MDE
+	tasks.
+	\item we design a learnable 
+	matrix to update the patch's 
+	location. (\textbf{Fast})
+	The location update is based on
+	attack effect and visual quality using gradient 
+	descent automatically. (\textbf{Automatic})
+	we use perspective 
+	transform to alter the patch's appearance and make 
+	it looks like a sticker. (\textbf{Inconspicuous})
+	\item We evaluate our method on
+	NYU depth v2 dataset, experiments
 	show that our method generate destructive while 
     concealed adversarial examples.
 \end{itemize}.
