@@ -105,14 +105,11 @@ Sun Yat-sen University, China\\
 \end{abstract}
 
 \section{Introduction}
-Monocular Depth Estimation~(MDE) algorithms aim to 
-predict depth value of each pixel given a monocular
-image. it is a crucial 3D scene perception method. 
-%Trapped by the lack of sufficient geometric constraints, 
-%MDE is still an ill-posed problem. 
+Monocular Depth Estimation~(MDE) algorithms 
+is a crucial 3D scene perception method. 
 With the rapid development of 
 Deep Neural Networks(DNNs), many excellent MDE methods 
-have been proposed recently. 
+base on DNNs have been proposed recently. 
 However, according to Szegedy's 
 research~\cite{Szegedy_2014_ICLR}, DNNs are 
 prone to be attacked by adversarial examples: 
@@ -123,11 +120,14 @@ adversarial examples, into a wrong category with high probability.
 Adversarial examples have been found not only on classification tasks 
 but also on logical regression tasks, such as 
 semantic segmentation and 
-object recognition. MDE also failed to get rid of this dilemma.
-As a kind of 3D scene perception solution, MDE 
+object recognition. MDE also fail to get rid of this dilemma.
+As learned perception modules are increasingly
+deployed on autonomous driving vehicles, 
+mistaking a stop sign for a speed limit or causing
+obstacles to disappear can cause immense damage.
+So as a kind of 3D scene perception solution, MDE 
 algorithms need to be 
 robust and reliable.
-Otherwise, immense damage can be caused.
 
 %so that when an attack occurs in automatic 
 %driving, the vehicle can still accurately perceive the depth 
@@ -155,11 +155,11 @@ enlightening for attacking MDE.
 	}
 	\label[]{effect}
 \end{figure}
-However, \cite{Wong_2020_NIPS} is hard to be realized
+However, the study of Wong~\textit{et al} is hard to be realized
 in the physical world, since
 the perturbations added on the input images can not 
 be perceived by a camera. 
-While attacking scenes with patches is an appropriate solution. 
+However, attacking scenes with patches is an appropriate solution. 
 Camouflaging a patch to a sticker and sticking it 
 into the target scene is inconspicuous and easy
 to be implemented.
@@ -180,83 +180,99 @@ more naturalistic.
 But this will increase time and space complexity obviously.
 
 In this paper, we take physical realizability and 
-inconspicuousness into accout, and design an fast automatic
-algorithm to attack MDE algorithms.
-Fig.~\ref{effect} shows that our adversarial examples
-on pixel level can be simulated with a patch 
-sticked on a real scene.
-
-Specifically, 
+inconspicuousness into accout, and design a fast and automatic
+method to attack MDE algorithms.
+Fig.~\ref{effect} shows the rough outline of our method.
+Meanwhile it indicate that our adversarial examples generated
+on pixel level can be simulated through sticking a printed patch 
+on the real scene.
 
 The contributions of this work are as follows:
 \begin{itemize}
 	\item We are the first to apply patch attack on MDE
 	tasks.
-	\item we design a learnable 
-	matrix to update the patch's 
-	location. (\textbf{Fast})
-	The location update is based on
+	\item We propose a fast, automatic, inconspicuous attack 
+	method. In this method, a learnable 
+	matrix is designed to update the patch's location. 
+	The updating of the location is based on
 	attack effect and visual quality using gradient 
-	descent automatically. (\textbf{Automatic})
-	we use perspective 
+	descent automatically. Finally we use perspective 
 	transform to alter the patch's appearance and make 
-	it looks like a sticker. (\textbf{Inconspicuous})
-	\item We evaluate our method on
-	NYU depth v2 dataset, experiments
+	it looks like a sticker. 
+	\item experiments
 	show that our method generate destructive while 
     concealed adversarial examples.
 \end{itemize}.
 
-The structure in the rest of this paper is organized as
+The structure in the rest paper is organized as
 follows. After a review of MDE and patch attacks in
-Sec~\ref{Related Work}, we introduce our method 
+Sec~\ref{Background}, we introduce our method 
 concretely in Sec~\ref{Method}. Then we visualize 
 the effct of our location searching phase and attack a
 MDE network in Sec~\ref{Experiments}. Finally We
 analyze our patch attack method in Sec~\ref{Conclusion}.
 
 
-\section{Related Work}
-\label[]{Related Work}
-In this work, patch attack for MDE model are concentrated on, 
-so a brief review of MDE and patch attacks will be 
-introduced in this section.
+\section{Background}
+\label[]{Background}
+In this paper, patch attack for MDE model is concentrated on. 
+We will give a brief introduction for MDE task and review
+the related patch attack works. 
+Note that we are the first to attack MDE model with patches,
+so the related works only involved image classification,
+traffic sign recognition, face recognition, etc. 
+But these works still inspire us a lot.
 
 \subsection{Monocular Depth Estimation}
-\subsubsection{Supervised}
-DNNs learn through the supervision of ground truth labels 
-annotated artificially. Since the mapping from a single image 
-to a depth map is very complicated, this supervised learning 
-manner is very suitable for MDE tasks. The initial work adopts 
-this \textbf{intuitive endoder-decoder} concept. 
-Eigen et al.~\cite{Eigen_2014_nips} designed two hierarchical 
-neural networks to predict 
-the depth map in coarse and fine respectively.
-A network was proposed subsequently by them~\cite{Eigen_2015_ICCV}, 
-in which three 
-different tasks, depth estimation, segmentation and 
-normals prediction was integrated into one model.
-Lee~\cite{lee_2019_arxiv} coined novel local planar 
-guidance layers and locate 
-them at different scale decoding phases. 
-As a result of this, final fine depth maps are densely 
-restored from small to big.
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{imgs/MDE.pdf}
+	\caption{A common stream of MDE algorithm.}
+	\label[]{MDE}
+\end{figure}
+MDE algorithms can generate dense depth map for each pixel in 
+the given RGB image.
+They achieve satisfactory results base on advanced DNNs. 
+Fig.~\ref{MDE} shows a common inference stream of MDE model:
+A RGB image is fed into the MDE model, which generate dense 
+depth map for the image. The training of the model needs
+immense, dense annotaed image and depth maps.
+However, suffered from the lack of sufficient geometric constraints, 
+MDE is still an ill-posed problem. 
+%\subsubsection{Supervised}
+%DNNs learn through the supervision of ground truth labels 
+%annotated artificially. Since the mapping from a single image 
+%to a depth map is very complicated, this supervised learning 
+%manner is very suitable for MDE tasks. The initial work adopts 
+%this \textbf{intuitive endoder-decoder} concept. 
+%Eigen et al.~\cite{Eigen_2014_nips} designed two hierarchical 
+%neural networks to predict 
+%the depth map in coarse and fine respectively.
+%A network was proposed subsequently by them~\cite{Eigen_2015_ICCV}, 
+%in which three 
+%different tasks, depth estimation, segmentation and 
+%normals prediction was integrated into one model.
+%Lee~\cite{lee_2019_arxiv} coined novel local planar 
+%guidance layers and locate 
+%them at different scale decoding phases. 
+%As a result of this, final fine depth maps are densely 
+%restored from small to big.
 Current MDE networks are bulky and inefficient, which can not
 be equipped on embedding systems. Wofk et al.~\cite{Wofk_2019_ICRA} 
 proposed Fastdepth,
 a light, fast MDE network.
-Some researches~\cite{Li_2018_ACCV,cao_2017_CSVT,Fu_2018_CVPR} 
-address this problem by formulizing it as 
-a \textbf{classification} problem. 
-Discrete depth labels are prepared by separating 
-continuous depth value, which are then used to supervise 
-the training process.
-While using \textbf{relative depth information} to predict depth 
-indirectly is also a effective solution.
-Lee~\cite{Lee_2019_CVPR} proposed a method to predict depth from relative depth. 
-They first estimate relative depth by utilizing rank-1 property, 
-then the final depth maps are reconstructed through these relative 
-depth maps.
+%Some researches~\cite{Li_2018_ACCV,cao_2017_CSVT,Fu_2018_CVPR} 
+%address this problem by formulizing it as 
+%a \textbf{classification} problem. 
+%Discrete depth labels are prepared by separating 
+%continuous depth value, which are then used to supervise 
+%the training process.
+%While using \textbf{relative depth information} to predict depth 
+%indirectly is also a effective solution.
+%Lee~\cite{Lee_2019_CVPR} proposed a method to predict depth from relative depth. 
+%They first estimate relative depth by utilizing rank-1 property, 
+%then the final depth maps are reconstructed through these relative 
+%depth maps.
 
 \begin{figure*}[htb]
 	\centering
@@ -269,29 +285,29 @@ depth maps.
 	\label[]{stream}
 \end{figure*}
 \subsubsection{Unsupervised}
-Although there exist some datasets with ground truth depth 
-annotation, dense and accurate depth maps are labor-consuming and rare. 
-In that case, unsupervised methods dominate recently.
-Godard et al.~\cite{Godard_2017_CVPR} exploit the left-right 
-consistency of binocular image pairs
-to tackle this issue: 
-with a decently predicted disparity, 
-the two images sampled from a binocular camera can 
-synthesize each other. 
-A consecutive vedio sequence can provide a constrain for MDE.
-Given a middle frame and its former, later frame sampled from a video, 
-DNNs can estimate the camera pose and the depth, with which we can 
-restore the other two frames. Based on this constrain, camera pose 
-and depth can be learned jointly~\cite{Zhou_2017_CVPR}.
-However, there is a flaw in both video and binocular solutions.
-On the one hand, binocular image pairs methods struggle in occlusion 
-and texture-copy problems, yet, on the other hand, as an 
-alternative method, 
-predicting depth from a video performs unsatisfactorily 
-when it comes to relatively stationary objects.
-To address this, Godard et al.~\cite{Godard_2019_ICCV} 
-proposed a multi-scale reconstruction
-loss and a automasking approach to ignore relatively stationary objects.
+%Although there exist some datasets with ground truth depth 
+%annotation, dense and accurate depth maps are labor-consuming and rare. 
+%In that case, unsupervised methods dominate recently.
+%Godard et al.~\cite{Godard_2017_CVPR} exploit the left-right 
+%consistency of binocular image pairs
+%to tackle this issue: 
+%with a decently predicted disparity, 
+%the two images sampled from a binocular camera can 
+%synthesize each other. 
+%A consecutive vedio sequence can provide a constrain for MDE.
+%Given a middle frame and its former, later frame sampled from a video, 
+%DNNs can estimate the camera pose and the depth, with which we can 
+%restore the other two frames. Based on this constrain, camera pose 
+%and depth can be learned jointly~\cite{Zhou_2017_CVPR}.
+%However, there is a flaw in both video and binocular solutions.
+%On the one hand, binocular image pairs methods struggle in occlusion 
+%and texture-copy problems, yet, on the other hand, as an 
+%alternative method, 
+%predicting depth from a video performs unsatisfactorily 
+%when it comes to relatively stationary objects.
+%To address this, Godard et al.~\cite{Godard_2019_ICCV} 
+%proposed a multi-scale reconstruction
+%loss and a automasking approach to ignore relatively stationary objects.
 \subsection{Patch Attack}
 Adding perturbations to images has a limit: 
 the imperceptive noise can not be captured by camera.
