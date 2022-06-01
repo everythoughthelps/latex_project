@@ -49,7 +49,7 @@
 \begin{document}
 
 %%%%%%%%% TITLE - PLEASE UPDATE
-\title{Attck Monocular Depth Estimation with a Sticker}
+\title{Attck Monocular Depth Estimation Model with a Sticker}
 
 % \author{First Author\\
 % Institution1\\
@@ -236,7 +236,7 @@ They achieve satisfactory results base on advanced DNNs.
 Fig.~\ref{MDE} shows a common inference stream of MDE model:
 A RGB image is fed into the MDE model, which generate dense 
 depth map for the image. The training of the model needs
-immense, dense annotaed image and depth maps.
+immense, dense annotated images and depth maps.
 However, suffered from the lack of sufficient geometric constraints, 
 MDE is still an ill-posed problem. 
 %\subsubsection{Supervised}
@@ -257,10 +257,9 @@ MDE is still an ill-posed problem.
 %them at different scale decoding phases. 
 %As a result of this, final fine depth maps are densely 
 %restored from small to big.
-Current MDE networks are bulky and inefficient, which can not
-be equipped on embedding systems. Wofk et al.~\cite{Wofk_2019_ICRA} 
-proposed Fastdepth,
-a light, fast MDE network.
+In this paper, to study the effect of patch adversarial examples, 
+we examine the robustness of Fastdepth~\cite{Wofk_2019_ICRA}, an
+efficient and lightweight encoder-decoder MDE network.
 %Some researches~\cite{Li_2018_ACCV,cao_2017_CSVT,Fu_2018_CVPR} 
 %address this problem by formulizing it as 
 %a \textbf{classification} problem. 
@@ -284,7 +283,7 @@ a light, fast MDE network.
 	and Sec~\ref{Appearance Altering}}
 	\label[]{stream}
 \end{figure*}
-\subsubsection{Unsupervised}
+%\subsubsection{Unsupervised}
 %Although there exist some datasets with ground truth depth 
 %annotation, dense and accurate depth maps are labor-consuming and rare. 
 %In that case, unsupervised methods dominate recently.
