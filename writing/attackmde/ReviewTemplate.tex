@@ -159,10 +159,11 @@ However, the study of Wong~\textit{et al} is hard to be realized
 in the physical world, since
 the perturbations added on the input images can not 
 be perceived by a camera. 
-However, attacking scenes with patches is an appropriate solution. 
-Camouflaging a patch to a sticker and sticking it 
-into the target scene is inconspicuous and easy
-to be implemented.
+However, attacking scenes with patches is an appropriate solution,
+that is, camouflaging a patch to a sticker or a drawing 
+and sticking it into the target scene. 
+In doing so, the adversarial examples can attack a MDE model in 
+the physical world with showing no attack intention.
 
 There exist some works exploiting patches to generate 
 adversarial examples on image classification,
@@ -198,7 +199,7 @@ The contributions of this work are as follows:
 	attack effect and visual quality using gradient 
 	descent automatically. Finally we use perspective 
 	transform to alter the patch's appearance and make 
-	it looks like a sticker. 
+	it looks inconspicuous. 
 	\item experiments
 	show that our method generate destructive while 
     concealed adversarial examples.
@@ -365,15 +366,22 @@ transformation matrix, then they are deployed on the camera's lens.
 
 \section{Method}
 \label[]{Method}
-In this section, our MDE attacking method 
-is presentd in detail. we first formulize the problem 
-as an optimal problem
+To obtain adversarial examples with a patch,
+there are two problems to be tackled: the patch's location 
+and the patch's appearance.
+Therefore, we design a two-phase method, 
+which is shown in Fig.~\ref{stream}.
+The first phase named \textbf{Location Searching Phase} 
+searches a location for the patch and the second
+named \textbf{Appearance Altering Phase} 
+alters the patch appearance to make it inconspicuous.
+
+We first formulize the generation
+of the adversarial examples as an optimal problem 
 in Sec.~\ref{Problem Statement}. 
-Then we describe how we design our patch, the objective
-function and how the patches are optimized 
-in Sec.~\ref{Location Searching}. 
-Finally the appearance altering phase is introduced in
-Sec.~\ref{Appearance Altering}.
+Then the location searching phase and appearance altering 
+phase are presented in Sec.~\ref{Location Searching} 
+and Sec.~\ref{Appearance Altering} respectively.
 
 \subsection{Problem Statement}
 \label[]{Problem Statement}
@@ -383,7 +391,7 @@ a supervised learning problem.
 Denoting as $\mathcal{I}$ the space
 of RGB images and as $\mathcal{D}$ the domain of annotated depth
 maps, given a training set 
-$\mathcal{T}={(I^{H \times W \times 3}, D^{H \times W \times})}$, 
+$\mathcal{T}={(I^{H \times W \times 3}, D^{H \times W})}$, 
 $I \in \mathcal{I}$ and $D \in \mathcal{D}$, 
 a MDE model $f_{mde}$ can learning a non-linear mapping
 $f_{mde}: \mathcal{I}\rightarrow \mathcal{D}$.
@@ -392,21 +400,15 @@ $f_{mde}: \mathcal{I}\rightarrow \mathcal{D}$.
 %\mathbb{R}^{H \times W}$ a MDE model.
 Considering elaborately designed 
 perturbations can hardly be obtained by consumer cameras, 
-Our adversarial examples are generated through sticking 
+our adversarial examples $I^{adv}$ are generated through sticking 
 patches $\delta$ on appropriate areas. 
-Here we use following simplified equation denote our
-adversarial examples.
-Specific expression can be found in Sec.~\ref{Patch Design}.
-\begin{align}
-	I^{adv} = I + \delta 
-\end{align}
 %Note that this is 
 %a representation of attacking with one patch, 
 %we adopt more than one patch in our 
 %following experiments. 
 Our goal, attacking a MDE model, is to 
-maximize the error of ground truth depth map $D^{*}$ and 
-depth map generated from $I^{adv}$.
+maximize the distance between the depth map predicted from $I^{adv}$
+and the ground truth depth map $D^{*}$:
 \begin{align}
 	\max  \Vert f_{mde}(I^{adv}) - D^{*} \Vert_{p}
 \end{align} 
@@ -424,12 +426,10 @@ $\Vert \centerdot \Vert_p$ denotes the $l_p$ norm.
 
 \subsection{Location Searching}
 \label[]{Location Searching}
-
-In this subsection we are goint to 
-explicate our location searching phase.
-Including patch design, our objective function
+In this subsection, we explicate our location searching phase,
+of which consists patch design, objective function,
 and optimization of the location.
-The stream of the location searching phase can be seen in 
+The location searching phase can be seen in 
 Fig~\ref{stream}(a). 
 %Current works leverage a GAN to add perturbations on patterns or 
 %generate patterns, which has more time and spatial complexity. 
@@ -438,29 +438,46 @@ Fig~\ref{stream}(a).
 %transforms the patches to a more rational style before sticking.
 \subsubsection{Patch Design}
 \label[]{Patch Design}
-We hope the patch stuck in the scene looks like graffiti,
-so a simple line-drawn patch is preferred.
-Therefore, a patch is selected from QuickDraw~\cite{quickdraw},
-a collection of 50 million hand-writing drawings across 345 categories.
-to generate our adversarial examples $I^{adv}$.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.4\textwidth]{imgs/patch_mask.pdf}
+	\caption{Illustration of our mask $M$, with which
+	we can move a patch on images to be attacked through
+	$(1 - M) \odot I + \delta$.}
+	\label[]{patch_mask}
+\end{figure}
+For better inconspicuousness, we camouflage the patch added in 
+the scene as a graffiti.
+Therefore, when select patches, 
+simple line-drawn patches are preferred.
+We select a patch from QuickDraw~\cite{quickdraw},
+a collection of 50 million hand-writing drawings across 345 categories,
+to generate $I^{adv}$.
 
-To obtain $I^{adv}$,
-the first problem we encountered is where to stick the patches.
-Exhaustive search is feasible but time consuming. We expect to
-complete this process automatically and quickly.
-So we turn to optimizing the patch location 
-by gradient decenting.  
-To this end, A mask $M$ is defined to realize the 
-movement of the patch:
+As you can see from Fig.~\ref{patch_mask}, the patch is simple line-drawn,
+which means there is plenty of white area in it.
 we place the patch $\delta$ in the center of the 
 clean image $I$, then the patch is expanded 
 to the size of $I$ by padding one around it.
-As you can see from Fig.~\ref{}, the patch is simple line-drawn,
-which means there is plenty of white area in it.
+In doing so, we define a mask $M \in {0,1}^n$
 Thus, to reduce modifications to $I$, $I^{adv}$ can be represented by:
+We use following equation denote our adversarial examples:
 \begin{align}
 	I^{adv} = M \odot I 
 \end{align}
+
+Instead adding perturbations on a patch
+or generating a patch, we select a patch and put it on a specific
+location of the clean 
+image $I$ to generate destructive and concealed adversarial examples. 
+Exhaustively searching the location on $I$ is feasible but time 
+consuming. 
+Our method, however, searches the location in an optimized manner, 
+that is, the patch location is updated according to 
+optimization objectives.
+To this end, We exploit affine transform to realize the movement of
+the patch. 
+
 The homogeneous coordinate of this 
 mask is noted as $G$ and its size is $H\times W\times 3$.
 We define a $2 \times 3$ matrix 
@@ -480,15 +497,6 @@ where $[t_x,t_y]^\top$ denote the offsets $\textbf{T}$ in
 horizontal and vertical directions, respectively. 
 Initial values are $[0,0]$, which represent
 that the center of the patch is on the center of the image.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.4\textwidth]{imgs/mask.pdf}
-	\caption{Illustration of our mask $M$, with which
-	we can move a patch on images to be attacked through
-	$(1 - M) \odot I + \delta$.}
-	\label[]{move}
-\end{figure}
 For each pixel of $m$, $G_i = (x_i, y_i, 1)$.
 This movement of the mask can be represented as:
 \begin{align}
